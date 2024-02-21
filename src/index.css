@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Inter";
+    font-optical-sizing: auto;
+    font-weight: 100 900;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+    src: url("./src/assets/fonts/inter.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Open Sans";
+    font-optical-sizing: auto;
+    font-weight: 300 800;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    src: url("./src/assets/fonts/open-sans.ttf") format("truetype");
+  }
+
+  body {
+    @apply bg-neutral-50 font-inter dark:bg-dark-900;
+  }
+}
+
+@layer components {
+  no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
