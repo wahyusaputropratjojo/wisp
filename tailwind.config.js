@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "selector",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     container: {
@@ -8,7 +9,7 @@ export default {
         DEFAULT: "1rem",
         sm: "1rem",
         md: "1rem",
-        lg: 0,
+        lg: "1rem",
         xl: 0,
         "2xl": 0,
       },
