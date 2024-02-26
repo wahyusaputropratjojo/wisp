@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import { useIntersectionObserver } from "@hooks/useIntersectionObserver";
+import { useThemeMode } from "@hooks/useThemeMode";
 import { useWindowSize } from "@hooks/useWindowSize";
 
 import { cn } from "@utils/cn";
@@ -89,7 +90,7 @@ export function Carousel(props: { data: CarouselData[] }) {
           );
         })}
       </div>
-      <aside className="justify-self-center text-2xl text-dark-500 md:col-span-3 md:justify-self-auto lg:col-span-2">
+      <aside className="justify-self-center md:col-span-3 md:justify-self-auto lg:col-span-2">
         <ul className="flex gap-1.5 md:hidden">
           {data.map((_, index) => {
             return (
@@ -106,9 +107,8 @@ export function Carousel(props: { data: CarouselData[] }) {
                   );
                 }}
                 className={cn(
-                  "size-1.5 rounded-full bg-neutral-200 dark:bg-dark-50",
-                  currentIndex === index &&
-                    "size-1.5 bg-primary-500 dark:bg-neutral-50",
+                  "size-1.5 rounded-full bg-base-300",
+                  currentIndex === index && "size-1.5 bg-primary-700",
                 )}
               />
             );
@@ -120,8 +120,8 @@ export function Carousel(props: { data: CarouselData[] }) {
               <li
                 key={index}
                 className={cn(
-                  "relative flex items-center gap-3 overflow-hidden rounded-xl  p-3 transition-colors hover:bg-neutral-100 lg:p-4 dark:hover:bg-dark-800",
-                  currentIndex === index && "bg-neutral-200 dark:bg-dark-800",
+                  "relative flex items-center gap-3 overflow-hidden rounded-xl p-3 transition-colors hover:bg-base-200 lg:p-4",
+                  currentIndex === index && "bg-base-200",
                 )}
                 onClick={() => {
                   scrollToElementByIndex(
@@ -137,13 +137,13 @@ export function Carousel(props: { data: CarouselData[] }) {
                   alt=""
                   className="z-10 rounded-lg md:w-10 2xl:w-12"
                 />
-                <p className="z-10 line-clamp-2 text-ellipsis md:text-sm lg:w-48 lg:text-base dark:text-neutral-100">
+                <p className="z-10 line-clamp-2 text-ellipsis font-medium text-base-900 md:text-sm lg:w-48 lg:text-base">
                   {item.title}
                 </p>
                 {currentIndex === index && (
                   <div
                     ref={overlayRef}
-                    className="overlay absolute inset-0 size-full bg-neutral-300 opacity-50 dark:bg-dark-100"
+                    className="overlay absolute inset-0 size-full bg-base-300 opacity-50"
                   />
                 )}
               </li>
@@ -185,7 +185,7 @@ function Item({
       data-element="child"
       key={index}
       className={cn(
-        "relative min-h-96 w-10/12 shrink-0 snap-center overflow-hidden rounded-xl text-2xl text-dark-500 ease-in md:size-full md:flex-nowrap md:rounded-none md:opacity-80 md:transition-opacity md:duration-500",
+        "text-dark-500 relative min-h-96 w-10/12 shrink-0 snap-center overflow-hidden rounded-xl text-2xl ease-in md:size-full md:flex-nowrap md:rounded-none md:opacity-80 md:transition-opacity md:duration-500",
         currentIndex === index && "md:opacity-100",
       )}
     >
@@ -196,22 +196,21 @@ function Item({
       />
       <div
         className={cn(
-          "absolute bottom-0 top-[10px] size-full bg-gradient-to-t from-black ease-in md:opacity-80 md:transition-opacity md:duration-1000",
-          currentIndex === index && "md:opacity-100",
+          "absolute inset-0 size-full bg-gradient-to-t from-base-50",
         )}
       />
       <div className="absolute inset-x-6 bottom-10 flex flex-col gap-4 md:bottom-12 lg:inset-x-16">
         {/* <img
-                  src={item.logo}
-                  alt=""
-                  className={cn(
-                    "w-40 md:w-48 md:translate-x-4 md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:w-64",
-                    currentIndex === index && "md:translate-x-0 md:opacity-100",
-                  )}
-                /> */}
+          src={item.logo}
+          alt=""
+          className={cn(
+            "w-40 md:w-48 md:translate-x-4 md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:w-64",
+            currentIndex === index && "md:translate-x-0 md:opacity-100",
+          )}
+        /> */}
         <p
           className={cn(
-            "line-clamp-2 text-xl font-black text-neutral-100 md:line-clamp-none md:translate-x-4 md:text-3xl md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:text-5xl",
+            "line-clamp-2 text-xl font-black text-base-900 md:line-clamp-none md:translate-x-4 md:text-3xl md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:text-5xl",
             currentIndex === index && "md:translate-x-0 md:opacity-100",
           )}
         >
@@ -220,7 +219,7 @@ function Item({
         <div className="flex max-w-96 flex-col gap-1.5">
           <p
             className={cn(
-              "text-xs font-semibold uppercase text-neutral-100 md:translate-x-4 md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out",
+              "text-xs font-semibold uppercase text-base-900 md:translate-x-4 md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out",
               currentIndex === index && "md:translate-x-0 md:opacity-100",
             )}
           >
@@ -228,7 +227,7 @@ function Item({
           </p>
           <p
             className={cn(
-              "line-clamp-3 text-sm text-neutral-100 md:line-clamp-5 md:translate-x-4 md:text-base md:font-normal md:opacity-0 md:transition-all md:delay-200 md:duration-300  md:ease-in-out lg:text-lg",
+              "line-clamp-3 text-sm text-base-900 md:line-clamp-5 md:translate-x-4 md:text-base md:font-normal md:opacity-0 md:transition-all md:delay-200 md:duration-300  md:ease-in-out lg:text-lg",
               currentIndex === index && "md:translate-x-0 md:opacity-100",
             )}
           >

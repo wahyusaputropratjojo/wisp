@@ -1,6 +1,6 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 
-import { Sun, MoonStar } from "lucide-react";
+import { Sun, MoonStar, MonitorSmartphone } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -9,33 +9,33 @@ import {
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
 
-import { useDarkMode } from "@hooks/useDarkMode";
+import { useThemeMode } from "@hooks/useThemeMode";
+
+import { cn } from "@utils/cn";
 
 function Navbar() {
-  const { isDarkMode, enable, disable } = useDarkMode({
-    defaultValue: true,
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.querySelector("html")?.classList.add("dark");
-    } else {
-      document.querySelector("html")?.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+  const {
+    isDarkMode,
+    isDarkModeOS,
+    isLightMode,
+    isLightModeOS,
+    enable,
+    disable,
+    remove,
+  } = useThemeMode();
 
   return (
     <Fragment>
-      <header className="flex h-16 items-center justify-between bg-primary-300 px-4 lg:px-6 dark:bg-dark-700">
-        <p className="text-xl font-black text-neutral-50 dark:text-neutral-50">
-          WISP
-        </p>
+      <header className="flex h-16 items-center justify-between p-4 lg:p-12">
+        <p className="text-3xl font-black text-primary-700">WISP</p>
         <nav></nav>
         <DropdownMenu>
           <DropdownMenuTrigger>
-            {isDarkMode ?
-              <MoonStar className="size-6 text-neutral-50 dark:text-neutral-50" />
-            : <Sun className="size-6 text-neutral-50 dark:text-neutral-50" />}
+            {isLightMode && <Sun className="size-6 text-primary-700" />}
+            {isDarkMode && <MoonStar className="size-6 text-primary-700" />}
+            {(isLightModeOS || isDarkModeOS) && !isLightMode && !isDarkMode && (
+              <MonitorSmartphone className="size-6 text-primary-700" />
+            )}
           </DropdownMenuTrigger>
           <DropdownMenuContent sideOffset={32} align={"end"}>
             <DropdownMenuItem
@@ -45,8 +45,18 @@ function Navbar() {
                 enable();
               }}
             >
-              <MoonStar className="size-4 text-neutral-900 md:size-5 dark:text-neutral-50" />
-              <span className="text-sm text-neutral-900 md:text-base dark:text-neutral-50">
+              <MoonStar
+                className={cn(
+                  "size-4 text-base-800 md:size-5",
+                  isDarkMode && "text-primary-500",
+                )}
+              />
+              <span
+                className={cn(
+                  "text-sm font-medium text-base-800 md:text-base",
+                  isDarkMode && "text-primary-500",
+                )}
+              >
                 Dark
               </span>
             </DropdownMenuItem>
@@ -57,9 +67,47 @@ function Navbar() {
                 disable();
               }}
             >
-              <Sun className="size-4 text-neutral-900 md:size-5 dark:text-neutral-50" />
-              <span className="text-sm text-neutral-900 md:text-base dark:text-neutral-50">
+              <Sun
+                className={cn(
+                  "size-4 text-base-800 md:size-5 dark:text-neutral-50",
+                  isLightMode && "text-primary-500",
+                )}
+              />
+              <span
+                className={cn(
+                  "text-sm font-medium text-base-800 md:text-base dark:text-neutral-50",
+                  isLightMode && "text-primary-500",
+                )}
+              >
                 Light
+              </span>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="gap-3"
+              onSelect={(event) => {
+                event.preventDefault();
+                remove();
+              }}
+            >
+              <MonitorSmartphone
+                className={cn(
+                  "size-4 text-base-800 md:size-5 dark:text-neutral-50",
+                  (isDarkModeOS || isLightModeOS) &&
+                    !isDarkMode &&
+                    !isLightMode &&
+                    "text-primary-500",
+                )}
+              />
+              <span
+                className={cn(
+                  "text-sm font-medium text-base-800 md:text-base dark:text-neutral-50",
+                  (isDarkModeOS || isLightModeOS) &&
+                    !isDarkMode &&
+                    !isLightMode &&
+                    "text-primary-500",
+                )}
+              >
+                System
               </span>
             </DropdownMenuItem>
           </DropdownMenuContent>
