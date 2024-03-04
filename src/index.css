@@ -21,8 +21,204 @@
     src: url("./src/assets/fonts/open-sans.ttf") format("truetype");
   }
 
+  :root[data-theme-mode="light"][data-theme="default"] {
+    --color-base-text-50: 220deg 12% 95%;
+    --color-base-text-100: 204deg 10% 90%;
+    --color-base-text-200: 210deg 12% 80%;
+    --color-base-text-300: 208deg 11% 70%;
+    --color-base-text-400: 210deg 11% 60%;
+    --color-base-text-500: 211deg 11% 50%;
+    --color-base-text-600: 210deg 11% 40%;
+    --color-base-text-700: 212deg 11% 30%;
+    --color-base-text-800: 210deg 12% 20%;
+    --color-base-text-900: 216deg 10% 10%;
+    --color-base-text-950: 200deg 12% 5%;
+
+    --color-base-background-50: 216deg 20% 95%;
+    --color-base-background-100: 207deg 22% 90%;
+    --color-base-background-200: 210deg 20% 80%;
+    --color-base-background-300: 209deg 20% 70%;
+    --color-base-background-400: 210deg 20% 60%;
+    --color-base-background-500: 211deg 20% 50%;
+    --color-base-background-600: 210deg 20% 40%;
+    --color-base-background-700: 211deg 20% 30%;
+    --color-base-background-800: 210deg 20% 20%;
+    --color-base-background-900: 213deg 22% 10%;
+    --color-base-background-950: 204deg 20% 5%;
+
+    --color-primary-50: 213deg 44% 95%;
+    --color-primary-100: 211deg 41% 90%;
+    --color-primary-200: 211deg 41% 80%;
+    --color-primary-300: 212deg 42% 70%;
+    --color-primary-400: 212deg 42% 60%;
+    --color-primary-500: 212deg 42% 50%;
+    --color-primary-600: 212deg 42% 40%;
+    --color-primary-700: 212deg 42% 30%;
+    --color-primary-800: 211deg 41% 20%;
+    --color-primary-900: 211deg 41% 10%;
+    --color-primary-950: 213deg 44% 5%;
+
+    --color-secondary-50: 212deg 60% 95%;
+    --color-secondary-100: 213deg 57% 90%;
+    --color-secondary-200: 213deg 59% 80%;
+    --color-secondary-300: 213deg 58% 70%;
+    --color-secondary-400: 213deg 58% 60%;
+    --color-secondary-500: 213deg 58% 50%;
+    --color-secondary-600: 213deg 58% 40%;
+    --color-secondary-700: 213deg 58% 30%;
+    --color-secondary-800: 213deg 59% 20%;
+    --color-secondary-900: 213deg 57% 10%;
+    --color-secondary-950: 212deg 60% 5%;
+
+    --color-accent-50: 215deg 76% 95%;
+    --color-accent-100: 212deg 73% 90%;
+    --color-accent-200: 213deg 75% 80%;
+    --color-accent-300: 213deg 74% 70%;
+    --color-accent-400: 213deg 74% 60%;
+    --color-accent-500: 213deg 74% 50%;
+    --color-accent-600: 213deg 74% 40%;
+    --color-accent-700: 213deg 74% 30%;
+    --color-accent-800: 213deg 75% 20%;
+    --color-accent-900: 212deg 73% 10%;
+    --color-accent-950: 212deg 76% 5%;
+
+    --color-success-50: 100deg 60% 98%;
+    --color-success-100: 98deg 52% 96%;
+    --color-success-200: 101deg 56% 90%;
+    --color-success-300: 100deg 56% 84%;
+    --color-success-400: 100deg 55% 72%;
+    --color-success-500: 100deg 55% 60%;
+    --color-success-600: 100deg 43% 54%;
+    --color-success-700: 100deg 37% 36%;
+    --color-success-800: 101deg 36% 27%;
+    --color-success-900: 101deg 37% 18%;
+    --color-success-950: 99deg 38% 12%;
+
+    --color-warning-50: 43deg 78% 98%;
+    --color-warning-100: 39deg 78% 96%;
+    --color-warning-200: 38deg 82% 91%;
+    --color-warning-300: 38deg 80% 86%;
+    --color-warning-400: 38deg 79% 75%;
+    --color-warning-500: 38deg 80% 65%;
+    --color-warning-600: 38deg 60% 58%;
+    --color-warning-700: 38deg 43% 39%;
+    --color-warning-800: 38deg 44% 29%;
+    --color-warning-900: 39deg 43% 19%;
+    --color-warning-950: 39deg 42% 13%;
+
+    --color-error-50: 0deg 82% 98%;
+    --color-error-100: 0deg 74% 95%;
+    --color-error-200: 0deg 75% 89%;
+    --color-error-300: 0deg 74% 82%;
+    --color-error-400: 0deg 75% 68%;
+    --color-error-500: 0deg 75% 55%;
+    --color-error-600: 0deg 61% 49%;
+    --color-error-700: 0deg 62% 33%;
+    --color-error-800: 0deg 62% 25%;
+    --color-error-900: 0deg 62% 16%;
+    --color-error-950: 0deg 61% 11%;
+  }
+
+  :root[data-theme-mode="dark"][data-theme="default"] {
+    --color-base-text-50: 200deg 12% 5%;
+    --color-base-text-100: 216deg 10% 10%;
+    --color-base-text-200: 210deg 12% 20%;
+    --color-base-text-300: 212deg 11% 30%;
+    --color-base-text-400: 210deg 11% 40%;
+    --color-base-text-500: 211deg 11% 50%;
+    --color-base-text-600: 210deg 11% 60%;
+    --color-base-text-700: 208deg 11% 70%;
+    --color-base-text-800: 210deg 12% 80%;
+    --color-base-text-900: 204deg 10% 90%;
+    --color-base-text-950: 220deg 12% 95%;
+
+    --color-base-background-50: 204deg 20% 5%;
+    --color-base-background-100: 213deg 22% 10%;
+    --color-base-background-200: 210deg 20% 20%;
+    --color-base-background-300: 211deg 20% 30%;
+    --color-base-background-400: 210deg 20% 40%;
+    --color-base-background-500: 211deg 20% 50%;
+    --color-base-background-600: 210deg 20% 60%;
+    --color-base-background-700: 209deg 20% 70%;
+    --color-base-background-800: 210deg 20% 80%;
+    --color-base-background-900: 207deg 22% 90%;
+    --color-base-background-950: 216deg 20% 95%;
+
+    --color-primary-50: 213deg 44% 5%;
+    --color-primary-100: 211deg 41% 10%;
+    --color-primary-200: 211deg 41% 20%;
+    --color-primary-300: 212deg 42% 30%;
+    --color-primary-400: 212deg 42% 40%;
+    --color-primary-500: 212deg 42% 50%;
+    --color-primary-600: 212deg 42% 60%;
+    --color-primary-700: 212deg 42% 70%;
+    --color-primary-800: 211deg 41% 80%;
+    --color-primary-900: 211deg 41% 90%;
+    --color-primary-950: 213deg 44% 95%;
+
+    --color-secondary-50: 212deg 60% 5%;
+    --color-secondary-100: 213deg 57% 10%;
+    --color-secondary-200: 213deg 59% 20%;
+    --color-secondary-300: 213deg 58% 30%;
+    --color-secondary-400: 213deg 58% 40%;
+    --color-secondary-500: 213deg 58% 50%;
+    --color-secondary-600: 213deg 58% 60%;
+    --color-secondary-700: 213deg 58% 70%;
+    --color-secondary-800: 213deg 59% 80%;
+    --color-secondary-900: 213deg 57% 90%;
+    --color-secondary-950: 212deg 60% 95%;
+
+    --color-accent-50: 212deg 76% 5%;
+    --color-accent-100: 212deg 73% 10%;
+    --color-accent-200: 213deg 75% 20%;
+    --color-accent-300: 213deg 74% 30%;
+    --color-accent-400: 213deg 74% 40%;
+    --color-accent-500: 213deg 74% 50%;
+    --color-accent-600: 213deg 74% 60%;
+    --color-accent-700: 213deg 74% 70%;
+    --color-accent-800: 213deg 75% 80%;
+    --color-accent-900: 212deg 73% 90%;
+    --color-accent-950: 215deg 76% 95%;
+
+    --color-success-50: 100deg 60% 98%;
+    --color-success-100: 98deg 52% 96%;
+    --color-success-200: 101deg 56% 90%;
+    --color-success-300: 100deg 56% 84%;
+    --color-success-400: 100deg 55% 72%;
+    --color-success-500: 100deg 55% 60%;
+    --color-success-600: 100deg 43% 54%;
+    --color-success-700: 100deg 37% 36%;
+    --color-success-800: 101deg 36% 27%;
+    --color-success-900: 101deg 37% 18%;
+    --color-success-950: 99deg 38% 12%;
+
+    --color-warning-50: 43deg 78% 98%;
+    --color-warning-100: 39deg 78% 96%;
+    --color-warning-200: 38deg 82% 91%;
+    --color-warning-300: 38deg 80% 86%;
+    --color-warning-400: 38deg 79% 75%;
+    --color-warning-500: 38deg 80% 65%;
+    --color-warning-600: 38deg 60% 58%;
+    --color-warning-700: 38deg 43% 39%;
+    --color-warning-800: 38deg 44% 29%;
+    --color-warning-900: 39deg 43% 19%;
+    --color-warning-950: 39deg 42% 13%;
+
+    --color-error-50: 0deg 82% 98%;
+    --color-error-100: 0deg 74% 95%;
+    --color-error-200: 0deg 75% 89%;
+    --color-error-300: 0deg 74% 82%;
+    --color-error-400: 0deg 75% 68%;
+    --color-error-500: 0deg 75% 55%;
+    --color-error-600: 0deg 61% 49%;
+    --color-error-700: 0deg 62% 33%;
+    --color-error-800: 0deg 62% 25%;
+    --color-error-900: 0deg 62% 16%;
+    --color-error-950: 0deg 61% 11%;
+  }
+
   body {
-    @apply bg-neutral-50 font-inter dark:bg-dark-900;
+    @apply bg-base-50 font-body;
   }
 }
 

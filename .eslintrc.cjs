@@ -1,5 +1,3 @@
-const { config } = require("dotenv");
-
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -8,11 +6,12 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:tailwindcss/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
     "prettier",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh", "tailwindcss"],
+  plugins: ["react-refresh", "tailwindcss", "@tanstack/query"],
   rules: {
     "react-refresh/only-export-components": [
       "warn",
@@ -27,7 +26,7 @@ module.exports = {
   },
   settings: {
     tailwindcss: {
-      callees: ["cn"],
+      callees: ["clsx", "cva", "cn"],
       config: "tailwind.config.js",
     },
   },

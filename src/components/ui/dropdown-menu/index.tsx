@@ -14,7 +14,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@components/ui/dropdown-menu/dropdownMenu";
+} from "@components/ui/dropdown-menu/DropdownMenu";
 
 export {
   DropdownMenu,

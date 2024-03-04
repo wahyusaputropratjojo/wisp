@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+theme.txt
+RAWG - OpenAPI Specification.json

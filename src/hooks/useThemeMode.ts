@@ -57,7 +57,9 @@ export function useThemeMode(options?: ThemeModeOptions): ThemeModeOutput {
     isDarkModeOS: themeOSMode === "dark" || isPreferColorSchemeDark,
     isLightModeOS: themeOSMode === "light" || !isPreferColorSchemeDark,
     toggle: () =>
-      setThemeMode((currentMode) => (currentMode === "dark" ? "light" : "dark")),
+      setThemeMode((currentMode) =>
+        currentMode === "dark" ? "light" : "dark",
+      ),
     enable: () => setThemeMode("dark"),
     disable: () => setThemeMode("light"),
     remove: () => removeThemeMode(),

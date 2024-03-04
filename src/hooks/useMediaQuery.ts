@@ -15,13 +15,14 @@ export function useMediaQuery(
 ): boolean;
 
 export function useMediaQuery(query: string, defaultValue: boolean): boolean;
+
 export function useMediaQuery(
   query: string,
   options?: boolean | UseMediaQueryOptions,
 ): boolean {
-  // TODO: Refactor this code after the deprecated signature has been removed.
   const defaultValue =
     typeof options === "boolean" ? options : options?.defaultValue ?? false;
+
   const initializeWithValue =
     typeof options === "boolean" ? undefined : (
       options?.initializeWithValue ?? undefined
@@ -41,7 +42,6 @@ export function useMediaQuery(
     return defaultValue;
   });
 
-  /** Handles the change event of the media query. */
   function handleChange() {
     setMatches(getMatches(query));
   }
