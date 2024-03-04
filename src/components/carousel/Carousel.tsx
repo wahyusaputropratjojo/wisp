@@ -4,22 +4,23 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 import { useIntersectionObserver } from "@hooks/useIntersectionObserver";
-import { useThemeMode } from "@hooks/useThemeMode";
 import { useWindowSize } from "@hooks/useWindowSize";
 
-import { cn } from "@utils/cn";
-import { scrollToElementByIndex } from "@utils/scrollToElementByIndex";
+import { cn } from "@libraries/utilities/cn";
+import { releaseDateModifier } from "@libraries/utilities/releaseDateModifier";
+import { scrollToElementByIndex } from "@libraries/utilities/scrollToElementByIndex";
 
-export type CarouselData = {
-  artwork: string;
-  cover: string;
-  logo: string;
-  title: string;
+type CarouselData = {
   description: string;
-  status: string;
+  grid: string;
+  hero: string;
+  id: string;
+  logo: string;
+  name: string;
+  releaseDate: string;
 };
 
-export function Carousel(props: { data: CarouselData[] }) {
+function Carousel(props: { data: CarouselData[] }) {
   const { width } = useWindowSize();
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -64,6 +65,7 @@ export function Carousel(props: { data: CarouselData[] }) {
         "[data-element='child']",
         {
           behavior: "instant",
+          block: "center",
         },
       );
 
@@ -133,12 +135,12 @@ export function Carousel(props: { data: CarouselData[] }) {
                 }}
               >
                 <img
-                  src={item.cover}
+                  src={item.grid}
                   alt=""
-                  className="z-10 rounded-lg md:w-10 2xl:w-12"
+                  className="z-10 rounded-md md:w-10 2xl:w-12"
                 />
                 <p className="z-10 line-clamp-2 text-ellipsis font-medium text-base-900 md:text-sm lg:w-48 lg:text-base">
-                  {item.title}
+                  {item.name}
                 </p>
                 {currentIndex === index && (
                   <div
@@ -190,8 +192,8 @@ function Item({
       )}
     >
       <img
-        src={item.artwork}
-        alt={`${item.title} Artwork`}
+        src={item.hero}
+        alt={`${item.name} Artwork`}
         className="size-full object-cover"
       />
       <div
@@ -199,35 +201,27 @@ function Item({
           "absolute inset-0 size-full bg-gradient-to-t from-base-50",
         )}
       />
-      <div className="absolute inset-x-6 bottom-10 flex flex-col gap-4 md:bottom-12 lg:inset-x-16">
-        {/* <img
+      <div className="absolute inset-x-6 bottom-10 flex flex-col gap-4 md:bottom-12 md:gap-8 lg:inset-x-16">
+        <img
           src={item.logo}
           alt=""
           className={cn(
-            "w-40 md:w-48 md:translate-x-4 md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:w-64",
+            "w-40 md:w-48 md:translate-x-4 md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:w-72",
             currentIndex === index && "md:translate-x-0 md:opacity-100",
           )}
-        /> */}
-        <p
-          className={cn(
-            "line-clamp-2 text-xl font-black text-base-900 md:line-clamp-none md:translate-x-4 md:text-3xl md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:text-5xl",
-            currentIndex === index && "md:translate-x-0 md:opacity-100",
-          )}
-        >
-          {item.title}
-        </p>
-        <div className="flex max-w-96 flex-col gap-1.5">
+        />
+        <div className="flex max-w-96 flex-col gap-1.5 md:gap-3">
           <p
             className={cn(
               "text-xs font-semibold uppercase text-base-900 md:translate-x-4 md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out",
               currentIndex === index && "md:translate-x-0 md:opacity-100",
             )}
           >
-            {item.status}
+            {releaseDateModifier(item.releaseDate)}
           </p>
           <p
             className={cn(
-              "line-clamp-3 text-sm text-base-900 md:line-clamp-5 md:translate-x-4 md:text-base md:font-normal md:opacity-0 md:transition-all md:delay-200 md:duration-300  md:ease-in-out lg:text-lg",
+              "line-clamp-2 text-sm text-base-900 md:translate-x-4 md:text-base md:font-normal md:opacity-0 md:transition-all md:delay-200 md:duration-300 md:ease-in-out lg:text-lg",
               currentIndex === index && "md:translate-x-0 md:opacity-100",
             )}
           >
@@ -238,3 +232,5 @@ function Item({
     </div>
   );
 }
+
+export { Carousel, Item, type CarouselData };

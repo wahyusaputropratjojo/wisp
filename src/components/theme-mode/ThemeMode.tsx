@@ -9,7 +9,7 @@ import {
 
 import { useThemeMode } from "@hooks/useThemeMode";
 
-import { cn } from "@utils/cn";
+import { cn } from "@libraries/utilities/cn";
 
 function ThemeMode() {
   const {
