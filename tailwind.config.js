@@ -14,14 +14,14 @@ export default {
         sm: "1rem",
         md: "1rem",
         lg: "1rem",
-        xl: 0,
-        "2xl": 0,
+        xl: "1rem",
+        "2xl": "3rem",
       },
     },
     extend: {
       fontFamily: {
-        body: ["Inter", "sans-serif"],
-        heading: ["Open Sans", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Open Sans", "system-ui", "sans-serif"],
       },
       colors: {
         primary: {
@@ -101,6 +101,34 @@ export default {
           800: "hsl(var(--color-error-800) / <alpha-value>)",
           900: "hsl(var(--color-error-900) / <alpha-value>)",
           950: "hsl(var(--color-error-950) / <alpha-value>)",
+        },
+
+        base: {
+          50: "hsl(var(--color-base-background-50) / <alpha-value>)",
+          100: "hsl(var(--color-base-background-100) / <alpha-value>)",
+          200: "hsl(var(--color-base-background-200) / <alpha-value>)",
+          300: "hsl(var(--color-base-background-300) / <alpha-value>)",
+          400: "hsl(var(--color-base-background-400) / <alpha-value>)",
+          500: "hsl(var(--color-base-background-500) / <alpha-value>)",
+          600: "hsl(var(--color-base-background-600) / <alpha-value>)",
+          700: "hsl(var(--color-base-background-700) / <alpha-value>)",
+          800: "hsl(var(--color-base-background-800) / <alpha-value>)",
+          900: "hsl(var(--color-base-background-900) / <alpha-value>)",
+          950: "hsl(var(--color-base-background-950) / <alpha-value>)",
+        },
+
+        "base-inverted": {
+          50: "hsl(var(--color-base-background-950) / <alpha-value>)",
+          100: "hsl(var(--color-base-background-900) / <alpha-value>)",
+          200: "hsl(var(--color-base-background-800) / <alpha-value>)",
+          300: "hsl(var(--color-base-background-700) / <alpha-value>)",
+          400: "hsl(var(--color-base-background-600) / <alpha-value>)",
+          500: "hsl(var(--color-base-background-500) / <alpha-value>)",
+          600: "hsl(var(--color-base-background-400) / <alpha-value>)",
+          700: "hsl(var(--color-base-background-300) / <alpha-value>)",
+          800: "hsl(var(--color-base-background-200) / <alpha-value>)",
+          900: "hsl(var(--color-base-background-100) / <alpha-value>)",
+          950: "hsl(var(--color-base-background-50) / <alpha-value>)",
         },
       },
       backgroundColor: {

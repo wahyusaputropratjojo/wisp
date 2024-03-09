@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
-import { Database } from "@libraries/types/supabase/wisp";
+import type { Database } from "@libraries/types/supabase/wisp";
 
 const supabase = createClient<Database>(
   import.meta.env.APP_WISP_SUPABASE_URL,
