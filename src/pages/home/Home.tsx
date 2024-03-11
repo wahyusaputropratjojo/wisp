@@ -23,7 +23,7 @@ function Home() {
   });
 
   return (
-    <main className="container space-y-16 pb-16 pt-8">
+    <main className="container space-y-16 pb-16">
       {gamesHeroCarouselQuery.isLoading ?
         <HeroCarouselSkeleton />
       : gamesHeroCarouselQuery.isSuccess ?
