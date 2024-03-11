@@ -1,21 +1,38 @@
 import { useQuery } from "@tanstack/react-query";
 
+import {
+  GroupCarousel,
+  GroupCarouselSkeleton,
+} from "@components/group-carousel";
 import { HeroCarousel, HeroCarouselSkeleton } from "@components/hero-carousel";
 
-import { getLatestGamesForCarousel } from "@services/sdk/supabase/wisp/games";
+import {
+  getNewReleaseGamesForHeroCarousel,
+  getNewReleaseGames,
+} from "@services/sdk/supabase/wisp/games";
 
 function Home() {
-  const latestGamesQuery = useQuery({
-    queryKey: ["games"],
-    queryFn: getLatestGamesForCarousel,
+  const gamesHeroCarouselQuery = useQuery({
+    queryKey: ["games-hero-carousel"],
+    queryFn: getNewReleaseGamesForHeroCarousel,
+  });
+
+  const newReleaseGamesQuery = useQuery({
+    queryKey: ["new-release-games"],
+    queryFn: getNewReleaseGames,
   });
 
   return (
-    <main className="container space-y-24 pb-64 pt-8">
-      {latestGamesQuery.isLoading ?
+    <main className="container space-y-16 pb-16 pt-8">
+      {gamesHeroCarouselQuery.isLoading ?
         <HeroCarouselSkeleton />
-      : latestGamesQuery.isSuccess ?
-        <HeroCarousel data={latestGamesQuery.data} />
+      : gamesHeroCarouselQuery.isSuccess ?
+        <HeroCarousel data={gamesHeroCarouselQuery.data} />
+      : null}
+      {newReleaseGamesQuery.isLoading ?
+        <GroupCarouselSkeleton />
+      : newReleaseGamesQuery.isSuccess ?
+        <GroupCarousel data={newReleaseGamesQuery.data} title="New Release" />
       : null}
     </main>
   );
