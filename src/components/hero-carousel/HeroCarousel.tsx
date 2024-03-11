@@ -45,6 +45,7 @@ function HeroCarousel({ data }: HeroCarouselProps) {
         stopOnInteraction: false,
         stopOnMouseEnter: false,
         stopOnFocusIn: false,
+        stopOnLastSnap: false,
         jump: true,
         delay: 10000,
       }),
@@ -102,16 +103,16 @@ function HeroCarousel({ data }: HeroCarouselProps) {
   }, [carouselAPI, width]);
 
   return (
-    <section className="grid transform-gpu select-none grid-flow-row grid-rows-1 gap-4 md:grid-flow-col md:grid-cols-10">
+    <section className="grid max-h-144 transform-gpu select-none grid-flow-row grid-rows-1 gap-4 md:grid-flow-col md:grid-cols-10">
       <div
         className={cn(
-          "min-h-96 cursor-pointer overflow-hidden md:col-span-7 lg:col-span-8",
+          "min-h-96 cursor-pointer overflow-hidden md:col-span-7 xl:col-span-8",
         )}
         ref={carouselRef}
       >
         <div className="grid size-full auto-cols-[85%] grid-flow-col gap-4 md:auto-cols-[100%]">
           {data.map((game) => (
-            <div key={game.id} className="relative rounded-xl">
+            <div key={game.id} className="relative max-h-144 rounded-xl">
               <div className="absolute bottom-0 z-10 space-y-3 p-5 md:p-10 lg:space-y-8 lg:p-16">
                 <img
                   id="logo"
@@ -138,16 +139,16 @@ function HeroCarousel({ data }: HeroCarouselProps) {
           ))}
         </div>
       </div>
-      <aside className="justify-self-center md:col-span-3 md:justify-self-auto lg:col-span-2">
+      <aside className="justify-self-center md:col-span-3 md:justify-self-auto xl:col-span-2">
         {width >= 768 && (
-          <ul className="space-y-4 md:block">
+          <ul className="grid size-full grid-flow-row grid-rows-5 justify-between gap-4">
             {data.map((game, index) => {
               return (
                 <li
                   key={game.id}
                   onClick={() => scrollTo(index, true)}
                   className={cn(
-                    "relative flex cursor-pointer items-center gap-3 overflow-hidden rounded-xl p-3 transition-colors hover:bg-base-200 lg:p-4",
+                    "relative flex cursor-pointer items-center gap-4 overflow-hidden rounded-xl p-3 transition-colors hover:bg-base-200 lg:p-4",
                     selectedIndex === index && "bg-base-200",
                   )}
                 >

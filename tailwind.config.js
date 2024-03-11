@@ -19,6 +19,46 @@ export default {
       },
     },
     extend: {
+      spacing: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
+      height: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
+      minHeight: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
+      maxHeight: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
+      width: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
+      minWidth: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
+      maxWidth: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
+      size: {
+        128: "32rem",
+        144: "36rem",
+        160: "40rem",
+      },
       fontFamily: {
         body: ["Inter", "system-ui", "sans-serif"],
         heading: ["Open Sans", "system-ui", "sans-serif"],
