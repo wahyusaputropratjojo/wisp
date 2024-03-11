@@ -23,7 +23,7 @@ type Games = {
 };
 
 type HeroCarouselProps = {
-  data: Games[]; // Replace 'any' with a more specific type, such as 'unknown'.
+  data: Games[];
 };
 
 function HeroCarousel({ data }: HeroCarouselProps) {
@@ -193,12 +193,19 @@ function HeroCarousel({ data }: HeroCarouselProps) {
 }
 
 function HeroCarouselSkeleton() {
+  const { width } = useWindowSize();
+
   return (
-    <section className="grid min-h-[384px] grid-flow-row grid-rows-1 md:h-[484px] md:grid-flow-col md:grid-cols-10 md:gap-4 lg:h-[524px] xl:h-[584px]">
-      <div className="flex size-full gap-4 overflow-hidden md:col-span-7 md:size-full md:gap-0 md:overflow-hidden lg:col-span-8">
+    <section className="grid min-h-[384px] grid-flow-row grid-rows-1 gap-4 md:h-[484px] md:grid-flow-col md:grid-cols-10 lg:h-[524px] xl:h-144">
+      <div className="flex size-full min-h-[384px] gap-4 overflow-hidden md:col-span-7 md:size-full md:gap-0 md:overflow-hidden lg:col-span-8">
         <Skeleton className="w-[85%] shrink-0 rounded-xl md:w-full" />
         <Skeleton className="w-[85%] shrink-0 rounded-xl md:hidden md:w-full" />
       </div>
+      {width < 768 && (
+        <div className="flex justify-center">
+          <Skeleton className="h-2 w-20 rounded-lg" />
+        </div>
+      )}
       <div className="size-full md:col-span-3 md:justify-self-auto lg:col-span-2">
         <Skeleton className="hidden size-full rounded-xl md:block" />
       </div>
