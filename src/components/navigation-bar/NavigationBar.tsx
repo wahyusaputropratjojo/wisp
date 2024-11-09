@@ -21,19 +21,18 @@ function NavigationBar() {
               <div className="relative flex">
                 <Search
                   size={16}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-base-900"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-base-50"
                 />
                 <input
                   type="text"
-                  className="rounded-lg border-none bg-base-100 pl-12 pr-6"
-                  placeholder="Search"
+                  className="rounded-lg border-none bg-base-300 pl-12 pr-6 text-base-50"
                 />
               </div>
             )}
           </div>
           <nav className="flex items-center justify-center">
             {width >= 1280 && (
-              <ul className="flex gap-6">
+              <ul className="flex gap-6 text-base-50">
                 <li>Discover</li>
                 <li>Browse</li>
               </ul>

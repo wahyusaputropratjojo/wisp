@@ -5,6 +5,7 @@ import {
   GroupCarouselSkeleton,
 } from "@components/group-carousel";
 import { HeroCarousel, HeroCarouselSkeleton } from "@components/hero-carousel";
+import { Input } from "@components/ui/input/Input";
 
 import {
   getNewReleaseGamesForHeroCarousel,
@@ -24,16 +25,16 @@ function Home() {
 
   return (
     <main className="container space-y-16 pb-16">
-      {gamesHeroCarouselQuery.isLoading ?
+      {/* {gamesHeroCarouselQuery.isLoading ?
         <HeroCarouselSkeleton />
       : gamesHeroCarouselQuery.isSuccess ?
         <HeroCarousel data={gamesHeroCarouselQuery.data} />
-      : null}
-      {newReleaseGamesQuery.isLoading ?
+      : null} */}
+      {/* {newReleaseGamesQuery.isLoading ?
         <GroupCarouselSkeleton />
       : newReleaseGamesQuery.isSuccess ?
         <GroupCarousel data={newReleaseGamesQuery.data} title="New Release" />
-      : null}
+      : null} */}
     </main>
   );
 }

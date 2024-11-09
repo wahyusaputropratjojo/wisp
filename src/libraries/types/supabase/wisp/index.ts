@@ -9,339 +9,691 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      AgeRatings: {
+      age_classification_system: {
         Row: {
           category: string
-          createdAt: string
+          created_at: string
           id: string
           logo: string | null
           organization: string
+          updated_at: string
         }
         Insert: {
           category: string
-          createdAt?: string
+          created_at?: string
           id?: string
           logo?: string | null
           organization: string
+          updated_at?: string
         }
         Update: {
           category?: string
-          createdAt?: string
+          created_at?: string
           id?: string
           logo?: string | null
           organization?: string
+          updated_at?: string
         }
         Relationships: []
       }
-      Companies: {
+      companies: {
         Row: {
           country: string
-          createdAt: string
-          establishedDate: string
+          created_at: string
+          established_date: string
           id: string
           logo: string | null
           name: string
+          updated_at: string
         }
         Insert: {
           country: string
-          createdAt?: string
-          establishedDate: string
+          created_at?: string
+          established_date: string
           id?: string
           logo?: string | null
           name: string
+          updated_at?: string
         }
         Update: {
           country?: string
-          createdAt?: string
-          establishedDate?: string
+          created_at?: string
+          established_date?: string
           id?: string
           logo?: string | null
           name?: string
+          updated_at?: string
         }
         Relationships: []
       }
-      Games: {
+      games: {
         Row: {
-          createdAt: string
+          created_at: string
           description: string
           grid: Json
           hero: Json
           id: string
+          is_base: boolean
+          is_bundle: boolean
+          is_expansion: boolean
+          is_remake: boolean
+          is_remaster: boolean
+          is_standalone_expansion: boolean
           logo: Json
           name: string
-          releaseDate: string
+          release_date: string
           slug: string
+          updated_at: string
         }
         Insert: {
-          createdAt?: string
+          created_at?: string
           description: string
           grid?: Json
           hero?: Json
           id?: string
+          is_base?: boolean
+          is_bundle?: boolean
+          is_expansion?: boolean
+          is_remake?: boolean
+          is_remaster?: boolean
+          is_standalone_expansion?: boolean
           logo?: Json
           name: string
-          releaseDate: string
+          release_date: string
           slug: string
+          updated_at?: string
         }
         Update: {
-          createdAt?: string
+          created_at?: string
           description?: string
           grid?: Json
           hero?: Json
           id?: string
+          is_base?: boolean
+          is_bundle?: boolean
+          is_expansion?: boolean
+          is_remake?: boolean
+          is_remaster?: boolean
+          is_standalone_expansion?: boolean
           logo?: Json
           name?: string
-          releaseDate?: string
+          release_date?: string
           slug?: string
+          updated_at?: string
         }
         Relationships: []
       }
-      GamesAgeRatings: {
+      games_age_classification_system: {
         Row: {
-          createdAt: string
           id: string
-          idAgeRating: string
-          idGame: string
+          id_age_classification_system: string
+          id_game: string
         }
         Insert: {
-          createdAt?: string
           id?: string
-          idAgeRating: string
-          idGame: string
+          id_age_classification_system: string
+          id_game: string
         }
         Update: {
-          createdAt?: string
           id?: string
-          idAgeRating?: string
-          idGame?: string
+          id_age_classification_system?: string
+          id_game?: string
         }
         Relationships: [
           {
-            foreignKeyName: "public_GamesAgeRatings_idAgeRating_fkey"
-            columns: ["idAgeRating"]
+            foreignKeyName: "games_age_classification_syst_id_age_classification_system_fkey"
+            columns: ["id_age_classification_system"]
             isOneToOne: false
-            referencedRelation: "AgeRatings"
+            referencedRelation: "age_classification_system"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_GamesAgeRatings_idGame_fkey"
-            columns: ["idGame"]
+            foreignKeyName: "games_age_classification_system_id_game_fkey"
+            columns: ["id_game"]
             isOneToOne: false
-            referencedRelation: "Games"
+            referencedRelation: "games"
             referencedColumns: ["id"]
-          }
+          },
         ]
       }
-      GamesDevelopers: {
+      games_bundles: {
         Row: {
-          createdAt: string
           id: string
-          idCompany: string
-          idGame: string
+          id_game: string
+          id_game_bundle: string
         }
         Insert: {
-          createdAt?: string
           id?: string
-          idCompany: string
-          idGame: string
+          id_game: string
+          id_game_bundle: string
         }
         Update: {
-          createdAt?: string
           id?: string
-          idCompany?: string
-          idGame?: string
+          id_game?: string
+          id_game_bundle?: string
         }
         Relationships: [
           {
-            foreignKeyName: "public_GamesDevelopers_idCompany_fkey"
-            columns: ["idCompany"]
+            foreignKeyName: "games_bundles_id_game_bundle_fkey"
+            columns: ["id_game_bundle"]
             isOneToOne: false
-            referencedRelation: "Companies"
+            referencedRelation: "games"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_GamesDevelopers_idGame_fkey"
-            columns: ["idGame"]
+            foreignKeyName: "games_bundles_id_game_fkey"
+            columns: ["id_game"]
             isOneToOne: false
-            referencedRelation: "Games"
+            referencedRelation: "games"
             referencedColumns: ["id"]
-          }
+          },
         ]
       }
-      GamesGenres: {
+      games_developers: {
         Row: {
-          createdAt: string
           id: string
-          idGame: string
-          idGenre: string
+          id_company: string
+          id_game: string
         }
         Insert: {
-          createdAt?: string
           id?: string
-          idGame: string
-          idGenre: string
+          id_company: string
+          id_game: string
         }
         Update: {
-          createdAt?: string
           id?: string
-          idGame?: string
-          idGenre?: string
+          id_company?: string
+          id_game?: string
         }
         Relationships: [
           {
-            foreignKeyName: "public_GamesGenres_idGame_fkey"
-            columns: ["idGame"]
+            foreignKeyName: "games_developers_id_company_fkey"
+            columns: ["id_company"]
             isOneToOne: false
-            referencedRelation: "Games"
+            referencedRelation: "companies"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_GamesGenres_idGenre_fkey"
-            columns: ["idGenre"]
+            foreignKeyName: "games_developers_id_game_fkey"
+            columns: ["id_game"]
             isOneToOne: false
-            referencedRelation: "Genres"
+            referencedRelation: "games"
             referencedColumns: ["id"]
-          }
+          },
         ]
       }
-      GamesPublishers: {
+      games_expansions: {
         Row: {
-          createdAt: string
           id: string
-          idCompany: string
-          idGame: string
+          id_base_game: string
+          id_expansion_game: string
         }
         Insert: {
-          createdAt?: string
           id?: string
-          idCompany: string
-          idGame: string
+          id_base_game: string
+          id_expansion_game: string
         }
         Update: {
-          createdAt?: string
           id?: string
-          idCompany?: string
-          idGame?: string
+          id_base_game?: string
+          id_expansion_game?: string
         }
         Relationships: [
           {
-            foreignKeyName: "public_GamesPublishers_idCompany_fkey"
-            columns: ["idCompany"]
+            foreignKeyName: "games_expansions_id_base_game_fkey"
+            columns: ["id_base_game"]
             isOneToOne: false
-            referencedRelation: "Companies"
+            referencedRelation: "games"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_GamesPublishers_idGame_fkey"
-            columns: ["idGame"]
+            foreignKeyName: "games_expansions_id_expansion_game_fkey"
+            columns: ["id_expansion_game"]
             isOneToOne: false
-            referencedRelation: "Games"
+            referencedRelation: "games"
             referencedColumns: ["id"]
-          }
+          },
         ]
       }
-      GamesThemes: {
+      games_genres: {
         Row: {
-          createdAt: string
           id: string
-          idGame: string
-          idTheme: string
+          id_game: string
+          id_genre: string
         }
         Insert: {
-          createdAt?: string
           id?: string
-          idGame: string
-          idTheme: string
+          id_game: string
+          id_genre: string
         }
         Update: {
-          createdAt?: string
           id?: string
-          idGame?: string
-          idTheme?: string
+          id_game?: string
+          id_genre?: string
         }
         Relationships: [
           {
-            foreignKeyName: "public_GamesThemes_idGame_fkey"
-            columns: ["idGame"]
+            foreignKeyName: "games_genres_id_game_fkey"
+            columns: ["id_game"]
             isOneToOne: false
-            referencedRelation: "Games"
+            referencedRelation: "games"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "public_GamesThemes_idTheme_fkey"
-            columns: ["idTheme"]
+            foreignKeyName: "games_genres_id_genre_fkey"
+            columns: ["id_genre"]
             isOneToOne: false
-            referencedRelation: "Themes"
+            referencedRelation: "genres"
             referencedColumns: ["id"]
-          }
+          },
         ]
       }
-      Genres: {
+      games_publishers: {
         Row: {
-          abbreviationName: string | null
-          createdAt: string
+          id: string
+          id_company: string
+          id_game: string
+        }
+        Insert: {
+          id?: string
+          id_company: string
+          id_game: string
+        }
+        Update: {
+          id?: string
+          id_company?: string
+          id_game?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_publishers_id_company_fkey"
+            columns: ["id_company"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "games_publishers_id_game_fkey"
+            columns: ["id_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      games_release_information: {
+        Row: {
+          id: string
+          id_game: string
+          id_platform: string
+          id_release_phase: string
+          release_date: string
+        }
+        Insert: {
+          id?: string
+          id_game: string
+          id_platform: string
+          id_release_phase: string
+          release_date: string
+        }
+        Update: {
+          id?: string
+          id_game?: string
+          id_platform?: string
+          id_release_phase?: string
+          release_date?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_release_information_id_game_fkey"
+            columns: ["id_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "games_release_information_id_platform_fkey"
+            columns: ["id_platform"]
+            isOneToOne: false
+            referencedRelation: "platforms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "games_release_information_id_release_phases_fkey"
+            columns: ["id_release_phase"]
+            isOneToOne: false
+            referencedRelation: "release_phases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      games_remakes: {
+        Row: {
+          id: string
+          id_original_game: string
+          id_remake_game: string
+        }
+        Insert: {
+          id?: string
+          id_original_game: string
+          id_remake_game: string
+        }
+        Update: {
+          id?: string
+          id_original_game?: string
+          id_remake_game?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_remakes_id_original_game_fkey"
+            columns: ["id_original_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "games_remakes_id_remake_game_fkey"
+            columns: ["id_remake_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      games_remasters: {
+        Row: {
+          id: string
+          id_original_game: string
+          id_remaster_game: string
+        }
+        Insert: {
+          id?: string
+          id_original_game: string
+          id_remaster_game: string
+        }
+        Update: {
+          id?: string
+          id_original_game?: string
+          id_remaster_game?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_remasters_id_original_game_fkey"
+            columns: ["id_original_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "games_remasters_id_remaster_game_fkey"
+            columns: ["id_remaster_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      games_standalone_expansions: {
+        Row: {
+          id: string
+          id_base_game: string
+          id_standalone_expansion_game: string
+        }
+        Insert: {
+          id?: string
+          id_base_game: string
+          id_standalone_expansion_game: string
+        }
+        Update: {
+          id?: string
+          id_base_game?: string
+          id_standalone_expansion_game?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_standalone_expansions_id_base_game_fkey"
+            columns: ["id_base_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "games_standalone_expansions_id_standalone_expansion_game_fkey"
+            columns: ["id_standalone_expansion_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      games_themes: {
+        Row: {
+          id: string
+          id_game: string
+          id_theme: string
+        }
+        Insert: {
+          id?: string
+          id_game: string
+          id_theme: string
+        }
+        Update: {
+          id?: string
+          id_game?: string
+          id_theme?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_themes_id_game_fkey"
+            columns: ["id_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "games_themes_id_theme_fkey"
+            columns: ["id_theme"]
+            isOneToOne: false
+            referencedRelation: "themes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      games_videos: {
+        Row: {
+          id: string
+          id_game: string
+          thumbnail: string
+          url: string
+        }
+        Insert: {
+          id?: string
+          id_game: string
+          thumbnail: string
+          url: string
+        }
+        Update: {
+          id?: string
+          id_game?: string
+          thumbnail?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "games_videos_id_game_fkey"
+            columns: ["id_game"]
+            isOneToOne: false
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      genres: {
+        Row: {
+          abbreviation_name: string | null
+          created_at: string
           id: string
           name: string
+          updated_at: string
         }
         Insert: {
-          abbreviationName?: string | null
-          createdAt?: string
+          abbreviation_name?: string | null
+          created_at?: string
           id?: string
           name: string
+          updated_at?: string
         }
         Update: {
-          abbreviationName?: string | null
-          createdAt?: string
+          abbreviation_name?: string | null
+          created_at?: string
           id?: string
           name?: string
+          updated_at?: string
         }
         Relationships: []
       }
-      Platforms: {
+      how_long_to_beat: {
         Row: {
-          "alternativeName ": string[] | null
-          createdAt: string
+          all_styles: Json
+          completionist: Json
+          created_at: string
+          id_game: string
+          main_and_sides: Json
+          main_story: Json
+          updated_at: string
+        }
+        Insert: {
+          all_styles?: Json
+          completionist?: Json
+          created_at?: string
+          id_game: string
+          main_and_sides?: Json
+          main_story?: Json
+          updated_at?: string
+        }
+        Update: {
+          all_styles?: Json
+          completionist?: Json
+          created_at?: string
+          id_game?: string
+          main_and_sides?: Json
+          main_story?: Json
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "how_long_to_beat_id_game_fkey"
+            columns: ["id_game"]
+            isOneToOne: true
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      metacritic: {
+        Row: {
+          created_at: string
+          id_game: string
+          meta_score: number
+          updated_at: string
+          user_score: number
+        }
+        Insert: {
+          created_at?: string
+          id_game: string
+          meta_score: number
+          updated_at?: string
+          user_score: number
+        }
+        Update: {
+          created_at?: string
+          id_game?: string
+          meta_score?: number
+          updated_at?: string
+          user_score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "metacritic_id_game_fkey"
+            columns: ["id_game"]
+            isOneToOne: true
+            referencedRelation: "games"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      platforms: {
+        Row: {
+          alternative_name: string[] | null
+          created_at: string
           family: string
           id: string
           name: string
-          releaseDate: string
+          release_date: string
           type: string
+          updated_at: string
         }
         Insert: {
-          "alternativeName "?: string[] | null
-          createdAt?: string
+          alternative_name?: string[] | null
+          created_at?: string
           family: string
           id?: string
           name: string
-          releaseDate: string
+          release_date: string
           type: string
+          updated_at?: string
         }
         Update: {
-          "alternativeName "?: string[] | null
-          createdAt?: string
+          alternative_name?: string[] | null
+          created_at?: string
           family?: string
           id?: string
           name?: string
-          releaseDate?: string
+          release_date?: string
           type?: string
+          updated_at?: string
         }
         Relationships: []
       }
-      Themes: {
+      release_phases: {
         Row: {
-          createdAt: string
+          created_at: string
           id: string
           name: string
+          updated_at: string
         }
         Insert: {
-          createdAt?: string
+          created_at?: string
           id?: string
           name: string
+          updated_at?: string
         }
         Update: {
-          createdAt?: string
+          created_at?: string
           id?: string
           name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      themes: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -361,14 +713,16 @@ export type Database = {
   }
 }
 
+type PublicSchema = Database[Extract<keyof Database, "public">]
+
 export type Tables<
   PublicTableNameOrOptions extends
-    | keyof (Database["public"]["Tables"] & Database["public"]["Views"])
+    | keyof (PublicSchema["Tables"] & PublicSchema["Views"])
     | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
     ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
         Database[PublicTableNameOrOptions["schema"]]["Views"])
-    : never = never
+    : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
       Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
@@ -376,67 +730,67 @@ export type Tables<
     }
     ? R
     : never
-  : PublicTableNameOrOptions extends keyof (Database["public"]["Tables"] &
-      Database["public"]["Views"])
-  ? (Database["public"]["Tables"] &
-      Database["public"]["Views"])[PublicTableNameOrOptions] extends {
-      Row: infer R
-    }
-    ? R
+  : PublicTableNameOrOptions extends keyof (PublicSchema["Tables"] &
+        PublicSchema["Views"])
+    ? (PublicSchema["Tables"] &
+        PublicSchema["Views"])[PublicTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
     : never
-  : never
 
 export type TablesInsert<
   PublicTableNameOrOptions extends
-    | keyof Database["public"]["Tables"]
+    | keyof PublicSchema["Tables"]
     | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
     ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
-    : never = never
+    : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Insert: infer I
     }
     ? I
     : never
-  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
-  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
-      Insert: infer I
-    }
-    ? I
+  : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
+    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
     : never
-  : never
 
 export type TablesUpdate<
   PublicTableNameOrOptions extends
-    | keyof Database["public"]["Tables"]
+    | keyof PublicSchema["Tables"]
     | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
     ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
-    : never = never
+    : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Update: infer U
     }
     ? U
     : never
-  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
-  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
-      Update: infer U
-    }
-    ? U
+  : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
+    ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
     : never
-  : never
 
 export type Enums<
   PublicEnumNameOrOptions extends
-    | keyof Database["public"]["Enums"]
+    | keyof PublicSchema["Enums"]
     | { schema: keyof Database },
   EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
     ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
-    : never = never
+    : never = never,
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
-  : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
-  ? Database["public"]["Enums"][PublicEnumNameOrOptions]
-  : never
+  : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
+    ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never

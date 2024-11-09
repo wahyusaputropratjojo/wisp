@@ -25,10 +25,10 @@ function ThemeMode() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        {isLightMode && <Sun className="size-6 text-primary-700" />}
-        {isDarkMode && <MoonStar className="size-6 text-primary-700" />}
+        {isLightMode && <Sun className="size-6 text-neutral-50" />}
+        {isDarkMode && <MoonStar className="size-6 text-neutral-50" />}
         {(isLightModeOS || isDarkModeOS) && !isLightMode && !isDarkMode && (
-          <MonitorSmartphone className="size-6 text-primary-700" />
+          <MonitorSmartphone className="size-6 text-neutral-50" />
         )}
       </DropdownMenuTrigger>
       <DropdownMenuContent sideOffset={32} align={"end"}>
@@ -41,14 +41,14 @@ function ThemeMode() {
         >
           <MoonStar
             className={cn(
-              "size-4 text-base-800 md:size-5",
-              isDarkMode && "text-primary-500",
+              "size-4 text-neutral-500 md:size-5",
+              isDarkMode && "text-neutral-50",
             )}
           />
           <span
             className={cn(
-              "text-sm font-medium text-base-800 md:text-base",
-              isDarkMode && "text-primary-500",
+              "md:text-neutral text-sm font-medium text-neutral-500",
+              isDarkMode && "text-neutral-50",
             )}
           >
             Dark
@@ -63,14 +63,14 @@ function ThemeMode() {
         >
           <Sun
             className={cn(
-              "size-4 text-base-800 md:size-5 dark:text-neutral-50",
-              isLightMode && "text-primary-500",
+              "size-4 text-neutral-500 md:size-5 dark:text-neutral-50",
+              isLightMode && "text-neutral-50",
             )}
           />
           <span
             className={cn(
-              "text-sm font-medium text-base-800 md:text-base dark:text-neutral-50",
-              isLightMode && "text-primary-500",
+              "md:text-neutral text-sm font-medium text-neutral-500 dark:text-neutral-50",
+              isLightMode && "text-neutral-50",
             )}
           >
             Light
@@ -85,20 +85,20 @@ function ThemeMode() {
         >
           <MonitorSmartphone
             className={cn(
-              "size-4 text-base-800 md:size-5 dark:text-neutral-50",
+              "size-4 text-neutral-500 md:size-5 dark:text-neutral-50",
               (isDarkModeOS || isLightModeOS) &&
                 !isDarkMode &&
                 !isLightMode &&
-                "text-primary-500",
+                "text-neutral-50",
             )}
           />
           <span
             className={cn(
-              "text-sm font-medium text-base-800 md:text-base dark:text-neutral-50",
+              "md:text-neutral text-sm font-medium text-neutral-500 dark:text-neutral-50",
               (isDarkModeOS || isLightModeOS) &&
                 !isDarkMode &&
                 !isLightMode &&
-                "text-primary-500",
+                "text-neutral-50",
             )}
           >
             System

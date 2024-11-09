@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
+import { Link } from "@tanstack/react-router";
 import { EmblaCarouselType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -9,14 +10,13 @@ import { Skeleton } from "@components/ui/skeleton";
 
 import { useWindowSize } from "@hooks/useWindowSize";
 
-type Game = {
-  id: string;
-  name: string;
-  grid: string;
-};
-
 type GroupCarouselProps = {
-  data: Game[];
+  data: {
+    id: string;
+    name: string;
+    grid: string;
+    slug: string;
+  }[];
   title: string;
 };
 
@@ -84,19 +84,25 @@ function GroupCarousel({ data, title }: GroupCarouselProps) {
       <div ref={carouselRef} className="overflow-hidden">
         <div className="grid auto-cols-[50%] grid-flow-col gap-5 sm:auto-cols-[30%] md:auto-cols-[25%] lg:auto-cols-[20%] xl:auto-cols-[18%]">
           {data.map((game) => (
-            <div key={game.id} className="cursor-pointer space-y-3">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-lg transition-colors hover:bg-base-900/10" />
-                <img
-                  src={game.grid}
-                  alt={`${game.name} grid image`}
-                  className="rounded-lg hover:bg-base-900"
-                />
+            <Link
+              to="/game/$gameId"
+              params={{ gameId: game.slug }}
+              key={game.id}
+            >
+              <div className="cursor-pointer space-y-3">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-lg transition-colors hover:bg-base-900/10" />
+                  <img
+                    src={game.grid}
+                    alt={`${game.name} grid image`}
+                    className="rounded-lg hover:bg-base-900"
+                  />
+                </div>
+                <p className="line-clamp-2 text-sm font-medium text-base-900 md:text-base">
+                  {game.name}
+                </p>
               </div>
-              <p className="line-clamp-2 text-sm font-medium text-base-900 md:text-base">
-                {game.name}
-              </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

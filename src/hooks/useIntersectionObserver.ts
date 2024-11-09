@@ -1,23 +1,23 @@
 import { useEffect, useRef, useState } from "react";
-import type { RefObject } from "react";
 
 type State = {
   isIntersecting: boolean;
   entry?: IntersectionObserverEntry;
 };
 
-type ObserverCallback = (
-  isIntersecting: boolean,
-  entry: IntersectionObserverEntry,
-) => void;
-
-type IntersectionObserverOptions = IntersectionObserverInit & {
+type UseIntersectionObserverOptions = {
+  root?: Element | Document | null;
+  rootMargin?: string;
+  threshold?: number | number[];
   freezeOnceVisible?: boolean;
-  onChange?: ObserverCallback;
+  onChange?: (
+    isIntersecting: boolean,
+    entry: IntersectionObserverEntry,
+  ) => void;
   initialIsIntersecting?: boolean;
 };
 
-type IntersectionResult = [
+type IntersectionReturn = [
   (node?: Element | null) => void,
   boolean,
   IntersectionObserverEntry | undefined,
@@ -27,46 +27,35 @@ type IntersectionResult = [
   entry?: IntersectionObserverEntry;
 };
 
-export function useIntersectionObserver(
-  options: IntersectionObserverOptions,
-): IntersectionResult;
-
-export function useIntersectionObserver(
-  elementRef: RefObject<Element>,
-  legacyOptions: IntersectionObserverOptions,
-): IntersectionObserverEntry | undefined;
-
-export function useIntersectionObserver(
-  optionsOrLegacyRef: IntersectionObserverOptions | RefObject<Element>,
-  legacyOptions?: IntersectionObserverOptions,
-): IntersectionResult | IntersectionObserverEntry | undefined {
-  const isLegacySignature = "current" in optionsOrLegacyRef;
-  const options = isLegacySignature ? legacyOptions : optionsOrLegacyRef;
-  const {
-    threshold = 0,
-    root = null,
-    rootMargin = "0%",
-    freezeOnceVisible = false,
-    initialIsIntersecting = false,
-  } = options ?? {};
-
-  const [newRef, setNewRef] = useState<Element | null>(null);
-  const ref = isLegacySignature ? optionsOrLegacyRef.current : newRef;
+export function useIntersectionObserver({
+  threshold = 0,
+  root = null,
+  rootMargin = "0%",
+  freezeOnceVisible = false,
+  initialIsIntersecting = false,
+  onChange,
+}: UseIntersectionObserverOptions = {}): IntersectionReturn {
+  const [ref, setRef] = useState<Element | null>(null);
 
   const [state, setState] = useState<State>(() => ({
     isIntersecting: initialIsIntersecting,
     entry: undefined,
   }));
 
-  const callbackRef = useRef<ObserverCallback>();
+  const callbackRef = useRef<UseIntersectionObserverOptions["onChange"]>();
 
-  callbackRef.current = options?.onChange;
+  callbackRef.current = onChange;
 
   const frozen = state.entry?.isIntersecting && freezeOnceVisible;
 
   useEffect(() => {
+    // Ensure we have a ref to observe
     if (!ref) return;
+
+    // Ensure the browser supports the Intersection Observer API
     if (!("IntersectionObserver" in window)) return;
+
+    // Skip if frozen
     if (frozen) return;
 
     let unobserve: (() => void) | undefined;
@@ -117,6 +106,7 @@ export function useIntersectionObserver(
     freezeOnceVisible,
   ]);
 
+  // ensures that if the observed element changes, the intersection observer is reinitialized
   const prevRef = useRef<Element | null>(null);
 
   useEffect(() => {
@@ -132,16 +122,13 @@ export function useIntersectionObserver(
     }
   }, [ref, state.entry, freezeOnceVisible, frozen, initialIsIntersecting]);
 
-  if (isLegacySignature) {
-    return state.entry;
-  }
-
   const result = [
-    setNewRef,
+    setRef,
     !!state.isIntersecting,
     state.entry,
-  ] as IntersectionResult;
+  ] as IntersectionReturn;
 
+  // Support object destructuring, by adding the specific values.
   result.ref = result[0];
   result.isIntersecting = result[1];
   result.entry = result[2];

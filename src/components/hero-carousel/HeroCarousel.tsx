@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 
 import { useGSAP } from "@gsap/react";
+import { Link } from "@tanstack/react-router";
 import Autoplay, { AutoplayType } from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import gsap from "gsap";
@@ -20,6 +21,7 @@ type Games = {
   grid: string;
   hero: string;
   logo: string;
+  slug: string;
 };
 
 type HeroCarouselProps = {
@@ -112,7 +114,12 @@ function HeroCarousel({ data }: HeroCarouselProps) {
       >
         <div className="grid size-full auto-cols-[85%] grid-flow-col gap-4 md:auto-cols-[100%]">
           {data.map((game) => (
-            <div key={game.id} className="relative max-h-144 rounded-xl">
+            <Link
+              to="/game/$gameSlug"
+              params={{ gameSlug: game.slug }}
+              key={game.id}
+              className="relative max-h-144 rounded-xl"
+            >
               <div className="absolute bottom-0 z-10 space-y-3 p-5 md:p-10 lg:space-y-8 lg:p-16">
                 <img
                   id="logo"
@@ -135,7 +142,7 @@ function HeroCarousel({ data }: HeroCarouselProps) {
                 alt={`${game.name} hero image`}
                 className="hero size-full rounded-xl object-cover"
               />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
