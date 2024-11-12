@@ -24,4 +24,10 @@ dist-ssr
 *.sw?
 
 theme.txt
-RAWG - OpenAPI Specification.json
+
+.env.local
+.env.production
+
+supabase/.branches
+supabase/.temp
+supabase/.env

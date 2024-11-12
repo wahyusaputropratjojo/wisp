@@ -1,21 +1,21 @@
-import pluginJs from "@eslint/js";
-import pluginQuery from "@tanstack/eslint-plugin-query";
-import pluginRouter from "@tanstack/eslint-plugin-router";
-import pluginReact from "eslint-plugin-react";
-import pluginTailwind from "eslint-plugin-tailwindcss";
+import js from "@eslint/js";
+import tanstackQuery from "@tanstack/eslint-plugin-query";
+import tanstackRouter from "@tanstack/eslint-plugin-router";
+import react from "eslint-plugin-react";
+import tailwindcss from "eslint-plugin-tailwindcss";
 import globals from "globals";
-import tseslint from "typescript-eslint";
+import ts from "typescript-eslint";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  js.configs.recommended,
+  react.configs.flat["jsx-runtime"],
+  ...ts.configs.recommended,
+  ...tanstackQuery.configs["flat/recommended"],
+  ...tanstackRouter.configs["flat/recommended"],
+  ...tailwindcss.configs["flat/recommended"],
   { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
   { languageOptions: { globals: globals.browser } },
-  ...tseslint.configs.recommended,
-  pluginJs.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  ...pluginQuery.configs["flat/recommended"],
-  ...pluginRouter.configs["flat/recommended"],
-  ...pluginTailwind.configs["flat/recommended"],
   {
     settings: {
       tailwindcss: {
