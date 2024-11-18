@@ -3,6 +3,7 @@ import tanstackQuery from "@tanstack/eslint-plugin-query";
 import tanstackRouter from "@tanstack/eslint-plugin-router";
 import react from "eslint-plugin-react";
 import tailwindcss from "eslint-plugin-tailwindcss";
+// import prettier from "eslint-config-prettier"
 import globals from "globals";
 import ts from "typescript-eslint";
 
@@ -20,7 +21,7 @@ export default [
     settings: {
       tailwindcss: {
         callees: ["classnames", "clsx", "ctl", "cva", "cn"],
-        config: "tailwind.config.js",
+        config: "tailwind.config.ts",
         cssFiles: [
           "**/*.css",
           "!**/node_modules",

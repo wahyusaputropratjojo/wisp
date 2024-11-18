@@ -24,6 +24,7 @@ export default {
     "<THIRD_PARTY_MODULES>",
     "^@assets/(.*)$",
     "^@components/(.*)$",
+    "^@contexts/(.*)$",
     "^@hooks/(.*)$",
     "^@libraries/(.*)$",
     "^@pages/(.*)$",
@@ -34,7 +35,7 @@ export default {
   importOrderSeparation: true,
 
   // Tailwind CSS
-  tailwindConfig: "./tailwind.config.js",
+  tailwindConfig: "./tailwind.config.ts",
   tailwindFunctions: ["clsx", "cva", "cn"],
 
   plugins: [

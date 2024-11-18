@@ -25,6 +25,7 @@
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
+      "@contexts/*": ["./src/contexts/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@libraries/*": ["./src/libraries/*"],
       "@pages/*": ["./src/pages/*"],
