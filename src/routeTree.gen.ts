@@ -11,10 +11,19 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as AuthenticatedImport } from './routes/_authenticated'
 import { Route as IndexImport } from './routes/index'
-import { Route as GameSlugImport } from './routes/game/$slug'
+import { Route as SignUpIndexImport } from './routes/sign-up/index'
+import { Route as SignInIndexImport } from './routes/sign-in/index'
+import { Route as ResetPasswordIndexImport } from './routes/reset-password/index'
+import { Route as ForgotPasswordIndexImport } from './routes/forgot-password/index'
 
 // Create/Update Routes
+
+const AuthenticatedRoute = AuthenticatedImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -22,9 +31,27 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const GameSlugRoute = GameSlugImport.update({
-  id: '/game/$slug',
-  path: '/game/$slug',
+const SignUpIndexRoute = SignUpIndexImport.update({
+  id: '/sign-up/',
+  path: '/sign-up/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SignInIndexRoute = SignInIndexImport.update({
+  id: '/sign-in/',
+  path: '/sign-in/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ResetPasswordIndexRoute = ResetPasswordIndexImport.update({
+  id: '/reset-password/',
+  path: '/reset-password/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ForgotPasswordIndexRoute = ForgotPasswordIndexImport.update({
+  id: '/forgot-password/',
+  path: '/forgot-password/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +66,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/game/$slug': {
-      id: '/game/$slug'
-      path: '/game/$slug'
-      fullPath: '/game/$slug'
-      preLoaderRoute: typeof GameSlugImport
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthenticatedImport
+      parentRoute: typeof rootRoute
+    }
+    '/forgot-password/': {
+      id: '/forgot-password/'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/reset-password/': {
+      id: '/reset-password/'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/sign-in/': {
+      id: '/sign-in/'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/sign-up/': {
+      id: '/sign-up/'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof SignUpIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +108,76 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/game/$slug': typeof GameSlugRoute
+  '': typeof AuthenticatedRoute
+  '/forgot-password': typeof ForgotPasswordIndexRoute
+  '/reset-password': typeof ResetPasswordIndexRoute
+  '/sign-in': typeof SignInIndexRoute
+  '/sign-up': typeof SignUpIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/game/$slug': typeof GameSlugRoute
+  '': typeof AuthenticatedRoute
+  '/forgot-password': typeof ForgotPasswordIndexRoute
+  '/reset-password': typeof ResetPasswordIndexRoute
+  '/sign-in': typeof SignInIndexRoute
+  '/sign-up': typeof SignUpIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/game/$slug': typeof GameSlugRoute
+  '/_authenticated': typeof AuthenticatedRoute
+  '/forgot-password/': typeof ForgotPasswordIndexRoute
+  '/reset-password/': typeof ResetPasswordIndexRoute
+  '/sign-in/': typeof SignInIndexRoute
+  '/sign-up/': typeof SignUpIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/game/$slug'
+  fullPaths:
+    | '/'
+    | ''
+    | '/forgot-password'
+    | '/reset-password'
+    | '/sign-in'
+    | '/sign-up'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/game/$slug'
-  id: '__root__' | '/' | '/game/$slug'
+  to:
+    | '/'
+    | ''
+    | '/forgot-password'
+    | '/reset-password'
+    | '/sign-in'
+    | '/sign-up'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/forgot-password/'
+    | '/reset-password/'
+    | '/sign-in/'
+    | '/sign-up/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  GameSlugRoute: typeof GameSlugRoute
+  AuthenticatedRoute: typeof AuthenticatedRoute
+  ForgotPasswordIndexRoute: typeof ForgotPasswordIndexRoute
+  ResetPasswordIndexRoute: typeof ResetPasswordIndexRoute
+  SignInIndexRoute: typeof SignInIndexRoute
+  SignUpIndexRoute: typeof SignUpIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  GameSlugRoute: GameSlugRoute,
+  AuthenticatedRoute: AuthenticatedRoute,
+  ForgotPasswordIndexRoute: ForgotPasswordIndexRoute,
+  ResetPasswordIndexRoute: ResetPasswordIndexRoute,
+  SignInIndexRoute: SignInIndexRoute,
+  SignUpIndexRoute: SignUpIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +191,30 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/game/$slug"
+        "/_authenticated",
+        "/forgot-password/",
+        "/reset-password/",
+        "/sign-in/",
+        "/sign-up/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/game/$slug": {
-      "filePath": "game/$slug.tsx"
+    "/_authenticated": {
+      "filePath": "_authenticated.tsx"
+    },
+    "/forgot-password/": {
+      "filePath": "forgot-password/index.tsx"
+    },
+    "/reset-password/": {
+      "filePath": "reset-password/index.tsx"
+    },
+    "/sign-in/": {
+      "filePath": "sign-in/index.tsx"
+    },
+    "/sign-up/": {
+      "filePath": "sign-up/index.tsx"
     }
   }
 }

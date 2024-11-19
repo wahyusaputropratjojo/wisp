@@ -1,28 +1,27 @@
-import React from "react";
+import * as React from "react";
 
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@libraries/utilities/cn";
+import { cn } from "@libraries/utilities";
 
 const buttonVariants = cva(
-  "ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-bold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-neutral-100 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        primary: "bg-primary-500 text-base-950 hover:bg-primary-500/80",
-        destructive: "bg-error-600 text-base-950 hover:bg-error-600/80",
+        primary: "hover:bg-primary-500/80 bg-primary-500 text-neutral-100",
+        secondary: "hover:bg-neutral-100/80 bg-neutral-100 text-neutral-900",
+        destructive: "hover:bg-error-500/80 bg-error-500 text-neutral-100",
         outline:
-          "border-2 border-primary-500 bg-transparent text-base-950 hover:bg-primary-500",
-        secondary: "bg-base-300 text-base-950 hover:bg-base-300/80",
-        ghost: "text-base-950 hover:bg-base-300",
-        link: "text-base-950 underline-offset-4 hover:underline",
+          "border-2 border-neutral-100 bg-transparent text-neutral-100 hover:bg-neutral-100 hover:text-neutral-900",
       },
       size: {
-        sm: "h-9 rounded-md px-3",
-        md: "h-10 px-4 py-2",
-        lg: "h-11 rounded-md px-8",
-        icon: "size-8",
+        sm: "h-8 px-3",
+        md: "h-10 px-5",
+        lg: "h-12 px-10",
+        xl: "h-16 px-10",
+        icon: "size-10",
       },
     },
     defaultVariants: {
@@ -50,6 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
+
 Button.displayName = "Button";
 
 export { Button };

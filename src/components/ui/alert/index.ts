@@ -1,7 +1,1 @@
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@components/ui/alert/Alert";
-
-export { Alert, AlertDescription, AlertTitle };
+export { Alert, AlertDescription, AlertTitle } from "./Alert";

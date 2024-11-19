@@ -1,3 +1,2 @@
-import { Input } from "@components/ui/input/Input";
-
-export { Input };
+export { Input } from "./Input";
+export { InputPassword } from "./InputPassword";

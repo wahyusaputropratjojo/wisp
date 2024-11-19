@@ -1,19 +1,7 @@
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@components/ui/form/Form";
-
-export {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-};
+export { FormMessage } from "./FormMessage";
+export { FormDescription } from "./FormDescription";
+export { FormControl } from "./FormControl";
+export { FormLabel } from "./FormLabel";
+export { FormField } from "./FormField";
+export { FormItem } from "./FormItem";
+export { Form } from "./Form";

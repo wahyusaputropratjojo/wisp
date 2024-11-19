@@ -1,3 +1,1 @@
-import { Badge } from "@components/ui/badge/Badge";
-
-export { Badge };
+export { Badge } from "./Badge";

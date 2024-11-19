@@ -1,3 +1,1 @@
-import { Skeleton } from "@components/ui/skeleton/Skeleton";
-
-export { Skeleton };
+export { Skeleton } from "./Skeleton";
