@@ -1,14 +1,13 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 
 import { cn } from "@libraries/utilities";
 
-function Skeleton({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+type SkeletonProps = ComponentProps<"div">;
+
+function Skeleton({ className, ...props }: SkeletonProps) {
   return (
     <div className={cn("animate-pulse bg-neutral-200", className)} {...props} />
   );
 }
 
-export { Skeleton };
+export { Skeleton, type SkeletonProps };

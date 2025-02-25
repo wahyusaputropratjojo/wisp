@@ -1,13 +1,12 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 
 import { cn } from "@libraries/utilities";
 
-import { useFormField } from "./Form";
+import { useFormField } from "./useFormField";
 
-const FormDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => {
+type FormDescriptionProps = ComponentProps<"p">;
+
+function FormDescription({ className, ref, ...props }: FormDescriptionProps) {
   const { formDescriptionId } = useFormField();
 
   return (
@@ -18,7 +17,8 @@ const FormDescription = React.forwardRef<
       {...props}
     />
   );
-});
+}
+
 FormDescription.displayName = "FormDescription";
 
-export { FormDescription };
+export { FormDescription, type FormDescriptionProps };

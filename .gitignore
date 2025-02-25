@@ -31,3 +31,4 @@ theme.txt
 supabase/.branches
 supabase/.temp
 supabase/.env
+*storybook.log

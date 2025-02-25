@@ -1,0 +1,39 @@
+import { type ComponentProps } from "react";
+
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { CircleIcon } from "lucide-react";
+
+import { cn } from "@libraries/utilities";
+
+type DropdownMenuRadioItemProps = ComponentProps<
+  typeof DropdownMenuPrimitive.RadioItem
+>;
+
+function DropdownMenuRadioItem({
+  className,
+  children,
+  ref,
+  ...props
+}: DropdownMenuRadioItemProps) {
+  return (
+    <DropdownMenuPrimitive.RadioItem
+      ref={ref}
+      className={cn(
+        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-neutral-800 focus:text-neutral-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        className,
+      )}
+      {...props}
+    >
+      <span className="absolute left-2 flex size-3.5 items-center justify-center">
+        <DropdownMenuPrimitive.ItemIndicator>
+          <CircleIcon className="size-2 fill-neutral-100" />
+        </DropdownMenuPrimitive.ItemIndicator>
+      </span>
+      {children}
+    </DropdownMenuPrimitive.RadioItem>
+  );
+}
+
+DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
+
+export { DropdownMenuRadioItem, type DropdownMenuRadioItemProps };

@@ -33,6 +33,11 @@ export default {
     "^(.*/)?[^/]+\\.css$",
   ],
   importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+
+  // Prettier Plugin Organize Attributes
+  // attributeGroups: ["$DEFAULT", "^data-"],
+  // attributeSort: "ASC",
 
   // Tailwind CSS
   tailwindConfig: "./tailwind.config.ts",
@@ -40,6 +45,7 @@ export default {
 
   plugins: [
     "@trivago/prettier-plugin-sort-imports",
+    // "prettier-plugin-organize-attributes",
     "prettier-plugin-tailwindcss",
     "prettier-plugin-packagejson",
   ],

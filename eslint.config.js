@@ -2,8 +2,8 @@ import js from "@eslint/js";
 import tanstackQuery from "@tanstack/eslint-plugin-query";
 import tanstackRouter from "@tanstack/eslint-plugin-router";
 import react from "eslint-plugin-react";
+import storybook from "eslint-plugin-storybook";
 import tailwindcss from "eslint-plugin-tailwindcss";
-// import prettier from "eslint-config-prettier"
 import globals from "globals";
 import ts from "typescript-eslint";
 
@@ -15,6 +15,7 @@ export default [
   ...tanstackQuery.configs["flat/recommended"],
   ...tanstackRouter.configs["flat/recommended"],
   ...tailwindcss.configs["flat/recommended"],
+  ...storybook.configs["flat/recommended"],
   { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
   { languageOptions: { globals: globals.browser } },
   {

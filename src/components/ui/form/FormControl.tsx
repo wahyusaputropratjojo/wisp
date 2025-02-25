@@ -1,13 +1,12 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 
 import { Slot } from "@radix-ui/react-slot";
 
-import { useFormField } from "./Form";
+import { useFormField } from "./useFormField";
 
-const FormControl = React.forwardRef<
-  React.ElementRef<typeof Slot>,
-  React.ComponentPropsWithoutRef<typeof Slot>
->(({ ...props }, ref) => {
+type FormControlProps = ComponentProps<typeof Slot>;
+
+function FormControl({ ref, ...props }: FormControlProps) {
   const { formItemId, formDescriptionId, formMessageId, invalid } =
     useFormField();
 
@@ -24,7 +23,8 @@ const FormControl = React.forwardRef<
       {...props}
     />
   );
-});
+}
+
 FormControl.displayName = "FormControl";
 
-export { FormControl };
+export { FormControl, type FormControlProps };

@@ -1,13 +1,12 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 
 import { cn } from "@libraries/utilities";
 
-import { useFormField } from "./Form";
+import { useFormField } from "./useFormField";
 
-const FormMessage = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, children, ...props }, ref) => {
+type FormMessageProps = ComponentProps<"p">;
+
+function FormMessage({ className, children, ref, ...props }: FormMessageProps) {
   const { error, formMessageId, invalid } = useFormField();
   const body = error ? String(error?.message) : children;
 
@@ -29,7 +28,8 @@ const FormMessage = React.forwardRef<
       {body}
     </p>
   );
-});
+}
+
 FormMessage.displayName = "FormMessage";
 
-export { FormMessage };
+export { FormMessage, type FormMessageProps };

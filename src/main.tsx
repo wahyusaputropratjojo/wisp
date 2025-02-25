@@ -1,33 +1,27 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom/client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 
-import { Toaster } from "@components/ui/toaster/Toaster";
+import { Toaster } from "@components/ui/toaster";
 
-import { useAuthentication } from "@hooks/useAuthentication";
+import { useAuth } from "@hooks/useAuth";
 
-import { AuthenticationProvider } from "./contexts/authentication";
+import { AuthProvider } from "./contexts/auth";
 import { routeTree } from "./routeTree.gen";
 
 import "./index.css";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+const queryClient = new QueryClient();
 
-const router = createRouter({
+export const router = createRouter({
   routeTree,
   context: {
+    isLoading: undefined!,
     isAuthenticated: undefined!,
     setIsAuthenticated: undefined!,
-    isLoading: undefined!,
   },
 });
 
@@ -38,22 +32,26 @@ declare module "@tanstack/react-router" {
 }
 
 function App() {
-  const auth = useAuthentication();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+
   return (
-    <>
-      <RouterProvider router={router} context={auth} />
-      <Toaster visibleToasts={3} offset={32} gap={16} />
-    </>
+    <Fragment>
+      <RouterProvider
+        router={router}
+        context={{ isAuthenticated, setIsAuthenticated }}
+      />
+      <Toaster />
+    </Fragment>
   );
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <AuthenticationProvider>
+      <AuthProvider>
         <App />
-      </AuthenticationProvider>
-      <ReactQueryDevtools />
+      </AuthProvider>
+      {/* <ReactQueryDevtools /> */}
     </QueryClientProvider>
   </React.StrictMode>,
 );

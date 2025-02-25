@@ -1,47 +1,40 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 
-import { cva, type VariantProps } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
 
 import { cn } from "@libraries/utilities";
 
+type BadgeProps = ComponentProps<"div"> & VariantProps<typeof badgeVariants>;
+
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2",
+  "inline-flex items-center rounded-md border font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2",
   {
     variants: {
-      variant: {
-        primary:
-          "hover:bg-neutral-900/80 border-transparent bg-neutral-900 text-neutral-100",
-        secondary:
-          "hover:bg-neutral-100/80 border-transparent bg-neutral-100 text-neutral-900",
-        destructive:
-          "bg-red-500 text-red-500 hover:bg-red-500/80 border-transparent",
-        outline: "border-2 border-neutral-900 text-neutral-900",
+      intent: {
+        primary: "border-transparent bg-neutral-800 text-neutral-100",
+        secondary: "border-transparent bg-neutral-100 text-neutral-900",
+        destructive: "border-transparent bg-error-500 text-neutral-100",
       },
       size: {
-        sm: "px-2 py-0.5 text-[10px]",
-        md: "px-2.5 py-0.5 text-xs",
-        lg: "px-4 py-1.5",
-        xl: "px-4 py-2 text-lg",
+        small: "px-2 py-0.5 text-xs",
+        medium: "px-2.5 py-0.5 text-sm",
+        large: "px-3 py-1 text-base",
       },
     },
     defaultVariants: {
-      variant: "primary",
-      size: "md",
+      intent: "primary",
+      size: "medium",
     },
   },
 );
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
-
-function Badge({ className, variant, size, ...props }: BadgeProps) {
+function Badge({ className, intent, size, ...props }: BadgeProps) {
   return (
     <div
-      className={cn(badgeVariants({ variant, size }), className)}
+      className={cn(badgeVariants({ intent, size }), className)}
       {...props}
     />
   );
 }
 
-export { Badge };
+export { Badge, type BadgeProps };

@@ -1,41 +1,34 @@
-import * as React from "react";
+import { useToast } from "@hooks/useToast";
 
 import {
-  CircleCheckIcon,
-  InfoIcon,
-  CircleXIcon,
-  CircleAlertIcon,
-  LoaderCircleIcon,
-  XIcon,
-} from "lucide-react";
-import { Toaster as Sonner } from "sonner";
+  Toast,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+} from "./toast";
 
-type ToasterProps = React.ComponentProps<typeof Sonner>;
+export function Toaster() {
+  const { toasts } = useToast();
 
-const Toaster = ({ ...props }: ToasterProps) => {
   return (
-    <Sonner
-      icons={{
-        success: <CircleCheckIcon className="text-success-700" />,
-        info: <InfoIcon />,
-        error: <CircleXIcon className="text-error-700" />,
-        warning: <CircleAlertIcon className="text-warning-700" />,
-        loading: <LoaderCircleIcon className="animate-spin" />,
-        close: <XIcon size={12} />,
-      }}
-      toastOptions={{
-        unstyled: true,
-        classNames: {
-          toast: "bg-neutral-800 w-full p-4 flex rounded gap-2 items-center",
-          title: "text-sm font-bold",
-          description: "text-sm",
-          closeButton: "text-neutral-900",
-          icon: "size-min",
-        },
-      }}
-      {...props}
-    />
+    <ToastProvider>
+      {toasts.map(({ id, title, description, action, ...props }) => {
+        return (
+          <Toast key={id} {...props}>
+            <div className="grid gap-2">
+              {title && <ToastTitle>{title}</ToastTitle>}
+              {description && (
+                <ToastDescription>{description}</ToastDescription>
+              )}
+            </div>
+            {action}
+            <ToastClose />
+          </Toast>
+        );
+      })}
+      <ToastViewport />
+    </ToastProvider>
   );
-};
-
-export { Toaster };
+}

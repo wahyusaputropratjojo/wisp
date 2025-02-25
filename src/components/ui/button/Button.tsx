@@ -1,55 +1,120 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 
 import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
 
 import { cn } from "@libraries/utilities";
 
+type ButtonProps = ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  };
+
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded text-sm font-bold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-neutral-100 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center rounded-md font-medium transition-colors focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-neutral-100",
   {
     variants: {
-      variant: {
-        primary: "hover:bg-primary-500/80 bg-primary-500 text-neutral-100",
-        secondary: "hover:bg-neutral-100/80 bg-neutral-100 text-neutral-900",
-        destructive: "hover:bg-error-500/80 bg-error-500 text-neutral-100",
-        outline:
-          "border-2 border-neutral-100 bg-transparent text-neutral-100 hover:bg-neutral-100 hover:text-neutral-900",
-      },
       size: {
-        sm: "h-8 px-3",
-        md: "h-10 px-5",
-        lg: "h-12 px-10",
-        xl: "h-16 px-10",
-        icon: "size-10",
+        small: "px-4 py-2 text-sm",
+        medium: "px-5 py-3 text-sm",
+        large: "px-6 py-4 text-sm",
+      },
+      fullWidth: {
+        true: "w-full",
+      },
+      disabled: {
+        true: "disabled:cursor-not-allowed",
+      },
+      align: {
+        start: "justify-start",
+        center: "justify-center",
+        end: "justify-end",
+      },
+      intent: {
+        primary: "bg-primary-500 text-neutral-100",
+        secondary: "bg-neutral-100 text-neutral-900",
+        destructive: "bg-error-500 text-neutral-100",
+      },
+      modifier: {
+        outline: "border-2 bg-transparent",
+        plain: "w-fit bg-transparent p-0 focus:outline-0",
+        icon: "w-fit p-1",
       },
     },
+    compoundVariants: [
+      {
+        intent: "primary",
+        modifier: "outline",
+        className: "border-primary-500 hover:bg-primary-500",
+      },
+      {
+        intent: "secondary",
+        modifier: "outline",
+        className:
+          "border-neutral-100 text-neutral-100 hover:bg-neutral-100 hover:text-neutral-900",
+      },
+      {
+        intent: "destructive",
+        modifier: "outline",
+        className:
+          "border-error-500 text-error-500 hover:bg-error-500 hover:text-neutral-100",
+      },
+      {
+        intent: "primary",
+        modifier: "plain",
+        className: "text-primary-500 hover:text-primary-500/80 hover:underline",
+      },
+      {
+        intent: "secondary",
+        modifier: "plain",
+        className: "text-neutral-100 hover:text-neutral-100/80 hover:underline",
+      },
+      {
+        intent: "destructive",
+        modifier: "plain",
+        className: "text-error-500 hover:text-error-500/80 hover:underline",
+      },
+    ],
     defaultVariants: {
-      variant: "primary",
-      size: "md",
+      intent: "primary",
+      size: "medium",
+      align: "center",
     },
   },
 );
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
+function Button({
+  asChild = false,
+  className,
+  modifier,
+  intent,
+  size,
+  align,
+  disabled,
+  fullWidth,
+  ref,
+  ...props
+}: ButtonProps) {
+  const Component = asChild ? Slot : "button";
+
+  return (
+    <Component
+      className={cn(
+        buttonVariants({
+          size,
+          align,
+          fullWidth,
+          disabled,
+          intent,
+          modifier,
+          className,
+        }),
+      )}
+      disabled={disabled}
+      ref={ref}
+      {...props}
+    />
+  );
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Component = asChild ? Slot : "button";
-    return (
-      <Component
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
-
-Button.displayName = "Button";
-
-export { Button };
+export { Button, type ButtonProps };

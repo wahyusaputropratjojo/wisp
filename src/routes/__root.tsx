@@ -1,13 +1,15 @@
 import { Fragment } from "react";
 
-import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
+import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
-import { AuthenticationContextValue } from "@contexts/authentication";
+import { AuthContextValue } from "@contexts/auth";
 
-const Route = createRootRouteWithContext<AuthenticationContextValue>()({
+const Route = createRootRouteWithContext<AuthContextValue>()({
   component: () => (
     <Fragment>
       <Outlet />
+      <TanStackRouterDevtools />
     </Fragment>
   ),
 });
