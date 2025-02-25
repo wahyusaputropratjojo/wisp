@@ -5,14 +5,14 @@ import { Button } from "@components/ui/button";
 function ResetPasswordCompleted() {
   return (
     <main className="container min-h-dvh sm:flex sm:items-center">
-      <section className="mx-auto flex w-full max-w-lg flex-col items-center justify-center gap-16 rounded p-4 sm:bg-neutral-800 sm:p-16">
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center justify-center gap-16 rounded-sm p-4 sm:bg-neutral-800 sm:p-16">
         <Link to="/">
           <p className="w-min rounded-md bg-neutral-100 p-2 text-center text-2xl font-black text-neutral-800">
             WISP
           </p>
         </Link>
         <div className="flex w-full flex-col gap-4">
-          <h1 className="rounded text-center text-base font-bold">
+          <h1 className="rounded-sm text-center text-base font-bold">
             You're All Set
           </h1>
           <p className="text-sm text-neutral-300">

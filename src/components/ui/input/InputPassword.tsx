@@ -27,7 +27,7 @@ function InputPassword({
       />
       <button
         type="button"
-        className="absolute right-2 top-1/2 grid aspect-square h-3/4 -translate-y-1/2 items-center justify-center rounded transition-colors hover:bg-neutral-500 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+        className="absolute top-1/2 right-2 grid aspect-square h-3/4 -translate-y-1/2 items-center justify-center rounded-sm transition-colors hover:bg-neutral-500 disabled:cursor-not-allowed disabled:hover:bg-transparent"
         disabled={disabled}
         onClick={() =>
           setType((prev) => (prev === "password" ? "text" : "password"))

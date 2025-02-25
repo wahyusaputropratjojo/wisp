@@ -52,20 +52,20 @@ function FeaturedCarousel() {
           {games.map((game, index) => (
             <CarouselItem key={index} className="cursor-pointer">
               <div className="relative overflow-hidden rounded-lg">
-                <div className="absolute bottom-0 z-10 flex w-fit flex-col gap-6 rounded p-8">
+                <div className="absolute bottom-0 z-10 flex w-fit flex-col gap-6 rounded-sm p-8">
                   <img src={game.logo} className="w-48 max-w-80" />
                 </div>
-                <div className="absolute size-full bg-gradient-to-tr from-neutral-950 from-10% to-transparent to-50%" />
+                <div className="absolute size-full bg-linear-to-tr from-neutral-950 from-10% to-transparent to-50%" />
                 <Image
                   fullWidth
                   src={game.hero}
-                  className="h-128 sm:aspect-anamorphic-horizontal"
+                  className="sm:aspect-anamorphic-horizontal h-128"
                 />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselDot className="absolute bottom-4 right-4 rounded-full bg-neutral-900 p-2" />
+        <CarouselDot className="absolute right-4 bottom-4 rounded-full bg-neutral-900 p-2" />
       </Carousel>
     </div>
   );

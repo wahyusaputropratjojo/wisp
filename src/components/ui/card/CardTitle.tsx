@@ -8,7 +8,7 @@ type CardTitleProps = ComponentProps<"p"> &
   VariantProps<typeof cardTitleVariants>;
 
 const cardTitleVariants = cva(
-  "line-clamp-2 text-pretty font-bold text-neutral-100",
+  "line-clamp-2 font-bold text-pretty text-neutral-100",
   {
     variants: {
       size: {

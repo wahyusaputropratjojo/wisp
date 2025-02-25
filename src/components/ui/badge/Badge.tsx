@@ -7,13 +7,13 @@ import { cn } from "@libraries/utilities";
 type BadgeProps = ComponentProps<"div"> & VariantProps<typeof badgeVariants>;
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border font-bold transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2",
+  "inline-flex items-center rounded-md border font-bold transition-colors focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 focus:outline-hidden",
   {
     variants: {
       intent: {
         primary: "border-transparent bg-neutral-800 text-neutral-100",
         secondary: "border-transparent bg-neutral-100 text-neutral-900",
-        destructive: "border-transparent bg-error-500 text-neutral-100",
+        destructive: "bg-error-500 border-transparent text-neutral-100",
       },
       size: {
         small: "px-2 py-0.5 text-xs",

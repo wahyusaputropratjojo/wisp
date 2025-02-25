@@ -9,14 +9,14 @@ type LabelProps = ComponentProps<typeof LabelPrimitive.Root> &
   VariantProps<typeof labelVariants>;
 
 const labelVariants = cva(
-  "text-sm font-medium leading-none text-neutral-100 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+  "text-sm leading-none font-medium text-neutral-100 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
   {
     variants: {
       variant: {
         error: "text-error-500",
       },
       position: {
-        inset: "absolute left-4 top-3 z-50 text-xs transition-all",
+        inset: "absolute top-3 left-4 z-50 text-xs transition-all",
       },
     },
   },

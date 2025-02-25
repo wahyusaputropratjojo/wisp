@@ -18,7 +18,6 @@ export default {
   trailingComma: "all",
   useTabs: false,
 
-  // Prettier Plugin Sort Imports
   importOrder: [
     "^(react(/(.*))?$|react-dom(/(.*))?)$",
     "<THIRD_PARTY_MODULES>",
@@ -35,17 +34,10 @@ export default {
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 
-  // Prettier Plugin Organize Attributes
-  // attributeGroups: ["$DEFAULT", "^data-"],
-  // attributeSort: "ASC",
-
-  // Tailwind CSS
-  tailwindConfig: "./tailwind.config.ts",
   tailwindFunctions: ["clsx", "cva", "cn"],
 
   plugins: [
     "@trivago/prettier-plugin-sort-imports",
-    // "prettier-plugin-organize-attributes",
     "prettier-plugin-tailwindcss",
     "prettier-plugin-packagejson",
   ],

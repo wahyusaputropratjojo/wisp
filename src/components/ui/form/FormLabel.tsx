@@ -17,7 +17,7 @@ function FormLabel({ className, ref, ...props }: FormLabelProps) {
     <Label
       ref={ref}
       className={cn(
-        "absolute left-4 top-3 z-50 text-xs text-neutral-400 transition-all",
+        "absolute top-3 left-4 z-50 text-xs text-neutral-400 transition-all",
         invalid && "text-error-500",
         className,
       )}

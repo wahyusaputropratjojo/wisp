@@ -8,7 +8,7 @@ type CardDescriptionProps = ComponentProps<"p"> &
   VariantProps<typeof cardDescriptionVariants>;
 
 const cardDescriptionVariants = cva(
-  "line-clamp-2 max-w-[40ch] text-pretty text-sm text-neutral-400",
+  "line-clamp-2 max-w-[40ch] text-sm text-pretty text-neutral-400",
   {
     variants: {},
   },

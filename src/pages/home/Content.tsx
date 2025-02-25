@@ -4,7 +4,7 @@ function Content() {
       <div className="flex gap-4">
         <div className="w-48">
           <img
-            className="aspect-classic-vertical rounded object-cover"
+            className="aspect-classic-vertical rounded-sm object-cover"
             src="mr-grid.png"
             alt="Grid"
           />

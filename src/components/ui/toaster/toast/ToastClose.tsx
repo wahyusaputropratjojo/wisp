@@ -12,7 +12,7 @@ function ToastClose({ className, ref, ...props }: ToastCloseProps) {
     <ToastPrimitives.Close
       ref={ref}
       className={cn(
-        "absolute right-2 top-2 rounded p-1 text-neutral-100/50 opacity-0 ring-neutral-100 transition-opacity hover:text-neutral-100 focus:opacity-100 focus:outline-none focus:ring group-hover:opacity-100",
+        "absolute top-2 right-2 rounded-sm p-1 text-neutral-100/50 opacity-0 ring-neutral-100 transition-opacity group-hover:opacity-100 hover:text-neutral-100 focus:opacity-100 focus:ring-3 focus:outline-hidden",
         className,
       )}
       toast-close=""

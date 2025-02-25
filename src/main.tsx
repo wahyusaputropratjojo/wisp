@@ -12,7 +12,7 @@ import { useAuth } from "@hooks/useAuth";
 import { AuthProvider } from "./contexts/auth";
 import { routeTree } from "./routeTree.gen";
 
-import "./index.css";
+import "./main.css";
 
 const queryClient = new QueryClient();
 
