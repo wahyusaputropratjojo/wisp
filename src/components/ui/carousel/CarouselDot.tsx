@@ -42,14 +42,14 @@ function CarouselDot({ className, ref }: CarouselDotProps) {
   return (
     <div
       ref={ref}
-      className={cn("flex items-center justify-center gap-1", className)}
+      className={cn("flex items-center justify-center gap-2", className)}
     >
       {scrollSnaps.map((_, index) => (
         <button
           key={index}
           onClick={() => onDotButtonClick(index)}
           className={cn(
-            "size-2 rounded-full bg-neutral-700 transition-all",
+            "size-1.5 rounded-full bg-neutral-700 transition-all",
             selectedIndex === index && "bg-neutral-100",
           )}
         />

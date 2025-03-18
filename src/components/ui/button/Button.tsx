@@ -11,7 +11,7 @@ type ButtonProps = ComponentProps<"button"> &
   };
 
 const buttonVariants = cva(
-  "inline-flex items-center rounded-md font-medium transition-colors focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-neutral-100",
+  "inline-flex items-center rounded-md font-medium transition-colors focus:outline focus:outline-offset-2 focus:outline-neutral-100",
   {
     variants: {
       size: {
@@ -117,4 +117,4 @@ function Button({
   );
 }
 
-export { Button, type ButtonProps };
+export { Button, type ButtonProps, buttonVariants };

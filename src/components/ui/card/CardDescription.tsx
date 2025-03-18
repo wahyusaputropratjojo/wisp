@@ -8,9 +8,20 @@ type CardDescriptionProps = ComponentProps<"p"> &
   VariantProps<typeof cardDescriptionVariants>;
 
 const cardDescriptionVariants = cva(
-  "line-clamp-2 max-w-[40ch] text-sm text-pretty text-neutral-400",
+  "line-clamp-2 max-w-[40ch] text-pretty text-neutral-400",
   {
-    variants: {},
+    variants: {
+      size: {
+        xs: "text-xs",
+        sm: "text-sm",
+        md: "text-base",
+        lg: "text-lg",
+        xl: "text-xl",
+      },
+    },
+    defaultVariants: {
+      size: "sm",
+    },
   },
 );
 

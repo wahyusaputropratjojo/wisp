@@ -115,7 +115,7 @@ function Carousel({
       <div
         ref={ref}
         onKeyDownCapture={handleKeyDown}
-        className={cn("relative grid gap-2", className)}
+        className={cn("relative grid gap-4", className)}
         role="region"
         aria-roledescription="carousel"
         {...props}
