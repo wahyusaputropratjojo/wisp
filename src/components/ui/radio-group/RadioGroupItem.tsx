@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react";
 
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { CircleIcon } from "lucide-react";
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui";
 
 import { cn } from "@libraries/utilities";
 

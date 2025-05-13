@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-@plugin '@tailwindcss/container-queries';
 @plugin 'tailwindcss-animate';
 
 @font-face {
@@ -8,8 +7,15 @@
   font-optical-sizing: auto;
   font-weight: 100 900;
   font-style: normal;
-  font-variation-settings: "slnt" 0;
-  src: url("./assets/fonts/inter.ttf") format("truetype");
+  src: url("./assets/fonts/inter.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-optical-sizing: auto;
+  font-weight: 100 900;
+  font-style: italic;
+  src: url("./assets/fonts/inter-italic.woff2") format("woff2");
 }
 
 @theme {
@@ -91,41 +97,7 @@
   --aspect-anamorphic-horizontal: 21 / 9;
   --aspect-anamorphic-vertical: 9 / 21;
 
-  --height-128: 32rem;
-  --height-144: 36rem;
-  --height-160: 40rem;
-
-  --min-height-128: 32rem;
-  --min-height-144: 36rem;
-  --min-height-160: 40rem;
-
-  --max-height-128: 32rem;
-  --max-height-144: 36rem;
-  --max-height-160: 40rem;
-
-  --width-128: 32rem;
-  --width-144: 36rem;
-  --width-160: 40rem;
-
-  --min-width-128: 32rem;
-  --min-width-144: 36rem;
-  --min-width-160: 40rem;
-
-  --container-128: 32rem;
-  --container-144: 36rem;
-  --container-160: 40rem;
-
-  --size-128: 32rem;
-  --size-144: 36rem;
-  --size-160: 40rem;
-
-  --font-sans: Inter, system-ui, sans-serif;
-
-  --z-index-60: 60;
-  --z-index-70: 70;
-  --z-index-80: 80;
-  --z-index-90: 90;
-  --z-index-100: 100;
+  --font-inter: Inter, sans-serif;
 }
 
 @utility container {
@@ -157,6 +129,10 @@
   display: none;
 }
 
-/* html {
+html {
   scrollbar-gutter: stable both-edges;
+}
+
+/* * {
+  outline: 2px solid orangered;
 } */

@@ -5,7 +5,7 @@ SET session_replication_role = replica;
 --
 
 -- Dumped from database version 15.6
--- Dumped by pg_dump version 15.6
+-- Dumped by pg_dump version 15.8
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -346,7 +346,21 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 	('00000000-0000-0000-0000-000000000000', '93263787-c5f2-4d38-b7e0-0aaa911e9499', '{"action":"login","actor_id":"c423eefc-e331-4340-8943-e6b02db7ec6b","actor_username":"opos@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-12-18 03:56:46.176664+00', ''),
 	('00000000-0000-0000-0000-000000000000', '59a7d7c0-c364-4bfd-a3d0-f825c52ea007', '{"action":"login","actor_id":"c423eefc-e331-4340-8943-e6b02db7ec6b","actor_username":"opos@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-12-18 03:57:06.086803+00', ''),
 	('00000000-0000-0000-0000-000000000000', '71a2a49d-ac2c-4d5e-af4a-e9dac3f61976', '{"action":"logout","actor_id":"c423eefc-e331-4340-8943-e6b02db7ec6b","actor_username":"opos@gmail.com","actor_via_sso":false,"log_type":"account"}', '2024-12-18 04:20:05.041135+00', ''),
-	('00000000-0000-0000-0000-000000000000', 'c7591320-77ab-42a8-8e07-9f5feda663c9', '{"action":"login","actor_id":"c423eefc-e331-4340-8943-e6b02db7ec6b","actor_username":"opos@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-12-18 07:03:26.722476+00', '');
+	('00000000-0000-0000-0000-000000000000', 'c7591320-77ab-42a8-8e07-9f5feda663c9', '{"action":"login","actor_id":"c423eefc-e331-4340-8943-e6b02db7ec6b","actor_username":"opos@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2024-12-18 07:03:26.722476+00', ''),
+	('00000000-0000-0000-0000-000000000000', '9d15407c-6ab8-43ed-bb8d-9f2b7644664e', '{"action":"user_signedup","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"team","traits":{"provider":"email"}}', '2025-02-25 08:15:30.496547+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'c837a8ca-d9b2-41f4-acf9-9a7beeffabdb', '{"action":"login","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2025-02-25 08:15:30.50853+00', ''),
+	('00000000-0000-0000-0000-000000000000', '29d64094-4be3-4041-97de-35967e3a832b', '{"action":"logout","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account"}', '2025-02-25 08:15:45.164175+00', ''),
+	('00000000-0000-0000-0000-000000000000', '47b36a20-8b81-4ba2-9640-cf2b1c4c5f17', '{"action":"login","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2025-02-25 08:16:05.840007+00', ''),
+	('00000000-0000-0000-0000-000000000000', '392264cc-b635-4d84-9377-eb78b9fa6e49', '{"action":"logout","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account"}', '2025-02-25 08:35:25.606781+00', ''),
+	('00000000-0000-0000-0000-000000000000', '4be3eba8-f7f6-461a-8574-490a9ad9b2bb', '{"action":"login","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2025-02-25 08:38:01.605796+00', ''),
+	('00000000-0000-0000-0000-000000000000', '39f1c0fe-7169-45c3-b4ff-9b8c5625f604', '{"action":"logout","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account"}', '2025-02-25 08:45:27.45736+00', ''),
+	('00000000-0000-0000-0000-000000000000', '9ec2a205-867b-4a95-a94d-422bbbc10962', '{"action":"login","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2025-02-26 04:31:42.632241+00', ''),
+	('00000000-0000-0000-0000-000000000000', '9435092f-05f0-4160-a627-142833bed681', '{"action":"token_refreshed","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"token"}', '2025-03-12 03:35:35.177596+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'dde17af1-d908-426f-bde5-8cc99d31355c', '{"action":"token_revoked","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"token"}', '2025-03-12 03:35:35.185032+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'c46bf788-a83e-42a7-9ddf-d77eb8f98df1', '{"action":"logout","actor_id":"6251b3fe-35ab-4f9e-a861-fe4040f2c1db","actor_username":"apriliasapan@gmail.com","actor_via_sso":false,"log_type":"account"}', '2025-03-12 03:36:59.91409+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'f49a9261-37ec-4045-96f3-35575cddca52', '{"action":"user_signedup","actor_id":"4d96829c-eaa5-46f4-83ba-46ca85823368","actor_username":"wahyupratjojo@gmail.com","actor_via_sso":false,"log_type":"team","traits":{"provider":"email"}}', '2025-03-18 04:32:06.154103+00', ''),
+	('00000000-0000-0000-0000-000000000000', '2ca58b98-de4f-4822-ab1c-b41ce2badda7', '{"action":"login","actor_id":"4d96829c-eaa5-46f4-83ba-46ca85823368","actor_username":"wahyupratjojo@gmail.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2025-03-18 04:32:06.163348+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'fa5609f4-7055-4d06-9c6f-7d8ffafbc20e', '{"action":"logout","actor_id":"4d96829c-eaa5-46f4-83ba-46ca85823368","actor_username":"wahyupratjojo@gmail.com","actor_via_sso":false,"log_type":"account"}', '2025-03-18 04:32:32.583119+00', '');
 
 
 --
@@ -360,7 +374,9 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 --
 
 INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at", "is_anonymous") VALUES
-	('00000000-0000-0000-0000-000000000000', 'c423eefc-e331-4340-8943-e6b02db7ec6b', 'authenticated', 'authenticated', 'opos@gmail.com', '$2a$10$eIzztIxAv.iXcOnBPfCituS.uzU0rRQFgsyp.IYgNEjwwucO.tIC6', '2024-11-29 06:23:50.966736+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-12-18 07:03:26.724849+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "c423eefc-e331-4340-8943-e6b02db7ec6b", "email": "opos@gmail.com", "last_name": "Pratjojo", "first_name": "Wahyu Saputro", "display_name": "opos___", "email_verified": false, "phone_verified": false}', NULL, '2024-11-29 06:23:50.948492+00', '2024-12-18 07:03:26.731219+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
+	('00000000-0000-0000-0000-000000000000', 'c423eefc-e331-4340-8943-e6b02db7ec6b', 'authenticated', 'authenticated', 'opos@gmail.com', '$2a$10$eIzztIxAv.iXcOnBPfCituS.uzU0rRQFgsyp.IYgNEjwwucO.tIC6', '2024-11-29 06:23:50.966736+00', NULL, '', NULL, '', NULL, '', '', NULL, '2024-12-18 07:03:26.724849+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "c423eefc-e331-4340-8943-e6b02db7ec6b", "email": "opos@gmail.com", "last_name": "Pratjojo", "first_name": "Wahyu Saputro", "display_name": "opos___", "email_verified": false, "phone_verified": false}', NULL, '2024-11-29 06:23:50.948492+00', '2024-12-18 07:03:26.731219+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false),
+	('00000000-0000-0000-0000-000000000000', '4d96829c-eaa5-46f4-83ba-46ca85823368', 'authenticated', 'authenticated', 'wahyupratjojo@gmail.com', '$2a$10$ZHG0hrUPH.MGClyITp4.lOX/3k4DzVbutFP/M/MBAYl32Xl50FN72', '2025-03-18 04:32:06.157489+00', NULL, '', NULL, '', NULL, '', '', NULL, '2025-03-18 04:32:06.164449+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "4d96829c-eaa5-46f4-83ba-46ca85823368", "email": "wahyupratjojo@gmail.com", "last_name": "Pratjojo", "first_name": "Wahyu", "display_name": "opos___", "email_verified": false, "phone_verified": false}', NULL, '2025-03-18 04:32:06.135697+00', '2025-03-18 04:32:06.174115+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false),
+	('00000000-0000-0000-0000-000000000000', '6251b3fe-35ab-4f9e-a861-fe4040f2c1db', 'authenticated', 'authenticated', 'apriliasapan@gmail.com', '$2a$10$HeElCeJcnjfXVWltYRwjzOhgCrEUYN2V3EqI3Y3HqgqwRbuOygu7G', '2025-02-25 08:15:30.500919+00', NULL, '', NULL, '', NULL, '', '', NULL, '2025-02-26 04:31:42.643246+00', '{"provider": "email", "providers": ["email"]}', '{"sub": "6251b3fe-35ab-4f9e-a861-fe4040f2c1db", "email": "apriliasapan@gmail.com", "last_name": "Sapan", "first_name": "Aprilia", "display_name": "apriliahs", "email_verified": false, "phone_verified": false}', NULL, '2025-02-25 08:15:30.459668+00', '2025-03-12 03:35:35.196993+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL, false);
 
 
 --
@@ -368,7 +384,9 @@ INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encryp
 --
 
 INSERT INTO "auth"."identities" ("provider_id", "user_id", "identity_data", "provider", "last_sign_in_at", "created_at", "updated_at", "id") VALUES
-	('c423eefc-e331-4340-8943-e6b02db7ec6b', 'c423eefc-e331-4340-8943-e6b02db7ec6b', '{"sub": "c423eefc-e331-4340-8943-e6b02db7ec6b", "email": "opos@gmail.com", "last_name": "Pratjojo", "first_name": "Wahyu Saputro", "display_name": "opos___", "email_verified": false, "phone_verified": false}', 'email', '2024-11-29 06:23:50.958535+00', '2024-11-29 06:23:50.958595+00', '2024-11-29 06:23:50.958595+00', 'ffef3b35-9f55-4c9d-bd6d-8d092b196b29');
+	('c423eefc-e331-4340-8943-e6b02db7ec6b', 'c423eefc-e331-4340-8943-e6b02db7ec6b', '{"sub": "c423eefc-e331-4340-8943-e6b02db7ec6b", "email": "opos@gmail.com", "last_name": "Pratjojo", "first_name": "Wahyu Saputro", "display_name": "opos___", "email_verified": false, "phone_verified": false}', 'email', '2024-11-29 06:23:50.958535+00', '2024-11-29 06:23:50.958595+00', '2024-11-29 06:23:50.958595+00', 'ffef3b35-9f55-4c9d-bd6d-8d092b196b29'),
+	('6251b3fe-35ab-4f9e-a861-fe4040f2c1db', '6251b3fe-35ab-4f9e-a861-fe4040f2c1db', '{"sub": "6251b3fe-35ab-4f9e-a861-fe4040f2c1db", "email": "apriliasapan@gmail.com", "last_name": "Sapan", "first_name": "Aprilia", "display_name": "apriliahs", "email_verified": false, "phone_verified": false}', 'email', '2025-02-25 08:15:30.488501+00', '2025-02-25 08:15:30.488565+00', '2025-02-25 08:15:30.488565+00', 'd83c4229-72fe-4779-beff-3f78ab072c52'),
+	('4d96829c-eaa5-46f4-83ba-46ca85823368', '4d96829c-eaa5-46f4-83ba-46ca85823368', '{"sub": "4d96829c-eaa5-46f4-83ba-46ca85823368", "email": "wahyupratjojo@gmail.com", "last_name": "Pratjojo", "first_name": "Wahyu", "display_name": "opos___", "email_verified": false, "phone_verified": false}', 'email', '2025-03-18 04:32:06.147188+00', '2025-03-18 04:32:06.147293+00', '2025-03-18 04:32:06.147293+00', 'bf732637-72d6-4b8e-8707-cb2d60c3a43f');
 
 
 --
@@ -1111,7 +1129,7 @@ INSERT INTO "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 223, true);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 229, true);
 
 
 --

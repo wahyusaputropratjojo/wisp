@@ -11,24 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as AuthImport } from './routes/_auth'
-import { Route as IndexImport } from './routes/index'
+import { Route as LayoutRouteImport } from './routes/_layout/route'
 import { Route as SignUpIndexImport } from './routes/sign-up/index'
 import { Route as SignInIndexImport } from './routes/sign-in/index'
+import { Route as ResetPasswordIndexImport } from './routes/reset-password/index'
 import { Route as ForgotPasswordIndexImport } from './routes/forgot-password/index'
-import { Route as BrowseIndexImport } from './routes/browse/index'
-import { Route as AuthResetPasswordIndexImport } from './routes/_auth/reset-password/index'
+import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as LayoutBrowseIndexImport } from './routes/_layout/browse/index'
 
 // Create/Update Routes
 
-const AuthRoute = AuthImport.update({
-  id: '/_auth',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
+const LayoutRouteRoute = LayoutRouteImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,54 +38,60 @@ const SignInIndexRoute = SignInIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ResetPasswordIndexRoute = ResetPasswordIndexImport.update({
+  id: '/reset-password/',
+  path: '/reset-password/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ForgotPasswordIndexRoute = ForgotPasswordIndexImport.update({
   id: '/forgot-password/',
   path: '/forgot-password/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const BrowseIndexRoute = BrowseIndexImport.update({
-  id: '/browse/',
-  path: '/browse/',
-  getParentRoute: () => rootRoute,
+const LayoutIndexRoute = LayoutIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LayoutRouteRoute,
 } as any)
 
-const AuthResetPasswordIndexRoute = AuthResetPasswordIndexImport.update({
-  id: '/reset-password/',
-  path: '/reset-password/',
-  getParentRoute: () => AuthRoute,
+const LayoutBrowseIndexRoute = LayoutBrowseIndexImport.update({
+  id: '/browse/',
+  path: '/browse/',
+  getParentRoute: () => LayoutRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/_auth': {
-      id: '/_auth'
+    '/_layout': {
+      id: '/_layout'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof AuthImport
+      preLoaderRoute: typeof LayoutRouteImport
       parentRoute: typeof rootRoute
     }
-    '/browse/': {
-      id: '/browse/'
-      path: '/browse'
-      fullPath: '/browse'
-      preLoaderRoute: typeof BrowseIndexImport
-      parentRoute: typeof rootRoute
+    '/_layout/': {
+      id: '/_layout/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof LayoutIndexImport
+      parentRoute: typeof LayoutRouteImport
     }
     '/forgot-password/': {
       id: '/forgot-password/'
       path: '/forgot-password'
       fullPath: '/forgot-password'
       preLoaderRoute: typeof ForgotPasswordIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/reset-password/': {
+      id: '/reset-password/'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordIndexImport
       parentRoute: typeof rootRoute
     }
     '/sign-in/': {
@@ -108,104 +108,104 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignUpIndexImport
       parentRoute: typeof rootRoute
     }
-    '/_auth/reset-password/': {
-      id: '/_auth/reset-password/'
-      path: '/reset-password'
-      fullPath: '/reset-password'
-      preLoaderRoute: typeof AuthResetPasswordIndexImport
-      parentRoute: typeof AuthImport
+    '/_layout/browse/': {
+      id: '/_layout/browse/'
+      path: '/browse'
+      fullPath: '/browse'
+      preLoaderRoute: typeof LayoutBrowseIndexImport
+      parentRoute: typeof LayoutRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface AuthRouteChildren {
-  AuthResetPasswordIndexRoute: typeof AuthResetPasswordIndexRoute
+interface LayoutRouteRouteChildren {
+  LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutBrowseIndexRoute: typeof LayoutBrowseIndexRoute
 }
 
-const AuthRouteChildren: AuthRouteChildren = {
-  AuthResetPasswordIndexRoute: AuthResetPasswordIndexRoute,
+const LayoutRouteRouteChildren: LayoutRouteRouteChildren = {
+  LayoutIndexRoute: LayoutIndexRoute,
+  LayoutBrowseIndexRoute: LayoutBrowseIndexRoute,
 }
 
-const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+const LayoutRouteRouteWithChildren = LayoutRouteRoute._addFileChildren(
+  LayoutRouteRouteChildren,
+)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '': typeof AuthRouteWithChildren
-  '/browse': typeof BrowseIndexRoute
+  '': typeof LayoutRouteRouteWithChildren
+  '/': typeof LayoutIndexRoute
   '/forgot-password': typeof ForgotPasswordIndexRoute
+  '/reset-password': typeof ResetPasswordIndexRoute
   '/sign-in': typeof SignInIndexRoute
   '/sign-up': typeof SignUpIndexRoute
-  '/reset-password': typeof AuthResetPasswordIndexRoute
+  '/browse': typeof LayoutBrowseIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '': typeof AuthRouteWithChildren
-  '/browse': typeof BrowseIndexRoute
+  '/': typeof LayoutIndexRoute
   '/forgot-password': typeof ForgotPasswordIndexRoute
+  '/reset-password': typeof ResetPasswordIndexRoute
   '/sign-in': typeof SignInIndexRoute
   '/sign-up': typeof SignUpIndexRoute
-  '/reset-password': typeof AuthResetPasswordIndexRoute
+  '/browse': typeof LayoutBrowseIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/_auth': typeof AuthRouteWithChildren
-  '/browse/': typeof BrowseIndexRoute
+  '/_layout': typeof LayoutRouteRouteWithChildren
+  '/_layout/': typeof LayoutIndexRoute
   '/forgot-password/': typeof ForgotPasswordIndexRoute
+  '/reset-password/': typeof ResetPasswordIndexRoute
   '/sign-in/': typeof SignInIndexRoute
   '/sign-up/': typeof SignUpIndexRoute
-  '/_auth/reset-password/': typeof AuthResetPasswordIndexRoute
+  '/_layout/browse/': typeof LayoutBrowseIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | ''
-    | '/browse'
+    | '/'
     | '/forgot-password'
+    | '/reset-password'
     | '/sign-in'
     | '/sign-up'
-    | '/reset-password'
+    | '/browse'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | ''
-    | '/browse'
     | '/forgot-password'
+    | '/reset-password'
     | '/sign-in'
     | '/sign-up'
-    | '/reset-password'
+    | '/browse'
   id:
     | '__root__'
-    | '/'
-    | '/_auth'
-    | '/browse/'
+    | '/_layout'
+    | '/_layout/'
     | '/forgot-password/'
+    | '/reset-password/'
     | '/sign-in/'
     | '/sign-up/'
-    | '/_auth/reset-password/'
+    | '/_layout/browse/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AuthRoute: typeof AuthRouteWithChildren
-  BrowseIndexRoute: typeof BrowseIndexRoute
+  LayoutRouteRoute: typeof LayoutRouteRouteWithChildren
   ForgotPasswordIndexRoute: typeof ForgotPasswordIndexRoute
+  ResetPasswordIndexRoute: typeof ResetPasswordIndexRoute
   SignInIndexRoute: typeof SignInIndexRoute
   SignUpIndexRoute: typeof SignUpIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AuthRoute: AuthRouteWithChildren,
-  BrowseIndexRoute: BrowseIndexRoute,
+  LayoutRouteRoute: LayoutRouteRouteWithChildren,
   ForgotPasswordIndexRoute: ForgotPasswordIndexRoute,
+  ResetPasswordIndexRoute: ResetPasswordIndexRoute,
   SignInIndexRoute: SignInIndexRoute,
   SignUpIndexRoute: SignUpIndexRoute,
 }
@@ -220,28 +220,29 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
-        "/_auth",
-        "/browse/",
+        "/_layout",
         "/forgot-password/",
+        "/reset-password/",
         "/sign-in/",
         "/sign-up/"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/_auth": {
-      "filePath": "_auth.tsx",
+    "/_layout": {
+      "filePath": "_layout/route.tsx",
       "children": [
-        "/_auth/reset-password/"
+        "/_layout/",
+        "/_layout/browse/"
       ]
     },
-    "/browse/": {
-      "filePath": "browse/index.tsx"
+    "/_layout/": {
+      "filePath": "_layout/index.tsx",
+      "parent": "/_layout"
     },
     "/forgot-password/": {
       "filePath": "forgot-password/index.tsx"
+    },
+    "/reset-password/": {
+      "filePath": "reset-password/index.tsx"
     },
     "/sign-in/": {
       "filePath": "sign-in/index.tsx"
@@ -249,9 +250,9 @@ export const routeTree = rootRoute
     "/sign-up/": {
       "filePath": "sign-up/index.tsx"
     },
-    "/_auth/reset-password/": {
-      "filePath": "_auth/reset-password/index.tsx",
-      "parent": "/_auth"
+    "/_layout/browse/": {
+      "filePath": "_layout/browse/index.tsx",
+      "parent": "/_layout"
     }
   }
 }

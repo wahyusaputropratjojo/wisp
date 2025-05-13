@@ -1,44 +1,36 @@
 import { Link } from "@tanstack/react-router";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 import { WISPLogo } from "@assets/logos";
 
+import { MobileMenu, UserMenu } from "@components/menu";
 import { Button } from "@components/ui/button";
-import { UserMenu } from "@components/user-menu";
 
 import { useAuth } from "@hooks/useAuth";
 
 function Header() {
   const { isAuthenticated } = useAuth();
 
+  const { width } = useWindowSize();
+
   return (
-    <header className="sticky top-0 z-50 flex items-center bg-neutral-900 p-6">
-      <div className="flex w-full items-center justify-between">
-        <div>
-          <Link to="/">
-            <WISPLogo />
-          </Link>
-        </div>
-        <div className="flex items-center gap-8">
-          <Link to="/">
-            <Button intent="secondary" modifier="plain">
-              Discover
-            </Button>
-          </Link>
-          <Link to="/browse">
-            <Button intent="secondary" modifier="plain">
-              Browse
-            </Button>
-          </Link>
-        </div>
-        <div>
-          {isAuthenticated ?
+    <header className="sticky flex items-center bg-neutral-900 py-2">
+      <section className="container flex w-full items-center justify-between">
+        <Link to="/" className="flex h-12 items-center">
+          <WISPLogo />
+        </Link>
+        {/* {isAuthenticated ?
+
+        } */}
+        {width &&
+          width > 768 &&
+          (isAuthenticated ?
             <UserMenu />
           : <Link to="/sign-in">
               <Button size="small">Sign In</Button>
-            </Link>
-          }
-        </div>
-      </div>
+            </Link>)}
+        {width && width < 768 && <MobileMenu />}
+      </section>
     </header>
   );
 }

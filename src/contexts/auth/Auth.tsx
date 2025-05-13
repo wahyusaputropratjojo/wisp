@@ -29,7 +29,7 @@ function AuthProvider({ children }: AuthParams) {
   useLayoutEffect(() => {
     if (isSuccess) {
       setIsAuthenticated(!!data);
-      console.log(data);
+      // console.log(data);
     }
   }, [data, isSuccess]);
 

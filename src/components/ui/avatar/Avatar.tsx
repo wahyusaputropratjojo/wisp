@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react";
 
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { Avatar as AvatarPrimitive } from "radix-ui";
 
 import { cn } from "@libraries/utilities";
 

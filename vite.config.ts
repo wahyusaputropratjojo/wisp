@@ -17,7 +17,11 @@ export default defineConfig({
     },
   },
   envPrefix: "APP_",
-  plugins: [react(), tailwindcss(), TanStackRouterVite()],
+  plugins: [
+    tailwindcss(),
+    TanStackRouterVite({ target: "react", autoCodeSplitting: true }),
+    react(),
+  ],
   server: {
     port: 3000,
   },

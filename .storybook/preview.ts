@@ -1,6 +1,6 @@
-import type { Preview } from "@storybook/react";
+import { type Preview } from "@storybook/react";
 
-import "../src/index.css";
+import "../src/main.css";
 
 const preview: Preview = {
   parameters: {
@@ -9,6 +9,19 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    backgrounds: {
+      values: [
+        {
+          name: "Dark",
+          value: "var(--color-neutral-900)",
+        },
+        {
+          name: "Light",
+          value: "var(--color-neutral-100)",
+        },
+      ],
+      default: "Dark",
     },
   },
 };

@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react";
 
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui";
 
 import { cn } from "@libraries/utilities";
 

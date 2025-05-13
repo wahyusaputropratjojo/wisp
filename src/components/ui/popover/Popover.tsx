@@ -1,4 +1,4 @@
-import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { Popover as PopoverPrimitive } from "radix-ui";
 
 const Popover = PopoverPrimitive.Root;
 const PopoverTrigger = PopoverPrimitive.Trigger;

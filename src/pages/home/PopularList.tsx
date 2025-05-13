@@ -1,14 +1,6 @@
-import { useEffect } from "react";
-
 import { Link } from "@tanstack/react-router";
 
-import { Badge } from "@components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@components/ui/card";
+import { GameGridCard } from "@components/game-card";
 import {
   Carousel,
   CarouselContent,
@@ -16,20 +8,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@components/ui/carousel";
-import { Image } from "@components/ui/image";
 
 import { useNewestGamesQuery } from "@hooks/query";
 
 function PopularList() {
   const { data, isSuccess } = useNewestGamesQuery();
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
-    <div className="grid gap-4">
-      <h2 className="text-xl font-bold">Newest Games</h2>
+    <div className="grid gap-3">
+      <h2 className="text-lg font-bold md:text-xl">Popular Games</h2>
       <Carousel
         options={{
           slidesToScroll: "auto",
@@ -46,34 +33,13 @@ function PopularList() {
             data.map((game) => (
               <CarouselItem
                 key={game.id}
-                className="basis-7/12 sm:basis-1/4 md:basis-1/5"
+                className="basis-3/5 sm:basis-1/3 lg:basis-1/6"
               >
                 <Link to="/browse">
-                  <Card>
-                    <CardContent className="relative">
-                      <Image
-                        src={game.grid?.thumbnail}
-                        className="aspect-classic-vertical"
-                      />
-                      <div className="absolute bottom-2 left-2 flex gap-1">
-                        {game.isBase && <Badge size="small">Base Game</Badge>}
-                        {game.isBundle && <Badge size="small">Bundle</Badge>}
-                        {game.isExpansion && (
-                          <Badge size="small">Expansion</Badge>
-                        )}
-                        {game.isRemake && <Badge size="small">Remake</Badge>}
-                        {game.isRemaster && (
-                          <Badge size="small">Remaster</Badge>
-                        )}
-                        {game.isStandaloneExpansion && (
-                          <Badge size="small">Standalone Expansion</Badge>
-                        )}
-                      </div>
-                    </CardContent>
-                    <CardContent>
-                      <CardTitle>{game.name}</CardTitle>
-                    </CardContent>
-                  </Card>
+                  <GameGridCard
+                    title={game.title}
+                    thumbnail={game.grid!.thumbnail}
+                  />
                 </Link>
               </CarouselItem>
             ))}

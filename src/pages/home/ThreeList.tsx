@@ -1,12 +1,22 @@
+import { useEffect } from "react";
+
+import { useMediaQuery } from "@uidotdev/usehooks";
+
+import { GameHighlightCard } from "@components/game-card";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@components/ui/card";
-import { Image } from "@components/ui/image";
+  Carousel,
+  CarouselContent,
+  CarouselDot,
+  CarouselItem,
+} from "@components/ui/carousel";
 
 function ThreeList() {
+  const isMedium = useMediaQuery("(min-width: 48rem)");
+
+  useEffect(() => {
+    console.log(isMedium);
+  }, [isMedium]);
+
   const games = [
     {
       image:
@@ -32,19 +42,26 @@ function ThreeList() {
   ];
 
   return (
-    <div className="grid grid-flow-col grid-cols-3 gap-6">
-      {games.map((game, index) => (
-        <Card key={index} className="gap-4">
-          <CardContent>
-            <Image src={game.image} className="aspect-wide-horizontal" />
-          </CardContent>
-          <CardContent>
-            <CardTitle size="xl">{game.title}</CardTitle>
-            <CardDescription>{game.description}</CardDescription>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+    <Carousel
+      options={{
+        breakpoints: {
+          "(min-width: 48rem)": { active: false },
+        },
+      }}
+    >
+      <CarouselContent className="md:grid md:grid-cols-3">
+        {games.map((game, index) => (
+          <CarouselItem key={index} className="basis-10/12 md:basis-full">
+            <GameHighlightCard
+              title={game.title}
+              thumbnail={game.image}
+              description={game.description}
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      {!isMedium && <CarouselDot />}
+    </Carousel>
   );
 }
 
